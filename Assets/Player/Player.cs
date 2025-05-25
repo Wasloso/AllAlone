@@ -15,7 +15,10 @@ namespace Player // Keep your namespaces consistent!
         [SerializeField] private HealthSystem _healthSystem;
         [SerializeField] private HungerSystem _hungerSystem;
         private PlayerStat _attackStats;
+
         private PlayerStat _defenseStats;
+
+        // private PlayerInventory _inventory;
         private PlayerStat _movementStats;
 
         [Header("Player Stats")] private ResourceStat HealthStats => _healthSystem.Health;
@@ -31,6 +34,7 @@ namespace Player // Keep your namespaces consistent!
             _movementStats = new PlayerStat(_playerMovement.moveSpeed);
             _attackStats = new PlayerStat(5);
             _defenseStats = new PlayerStat(0);
+            // _inventory = GetComponent<PlayerInventory>();
 
 
             _healthSystem?.Initialize(100);
