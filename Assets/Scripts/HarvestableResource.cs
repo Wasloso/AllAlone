@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
-    public class HarvestableResource : InteractableObject
+    public class HarvestableResource : MonoBehaviour, IInteractable
     {
         public GameObject droppedItemPrefab;
         public ToolType requiredToolType = ToolType.None;
@@ -15,10 +15,14 @@ namespace DefaultNamespace
 
         // TODO: Item drops
         public List<ItemDropEntry> itemDrops;
-        public event Action OnHarvest;
 
 
-        public override void Interact(GameObject interactor, ItemTool toolUsed = null)
+        public bool CanInteract(GameObject interactor)
+        {
+            return true;
+        }
+
+        public void Interact(GameObject interactor, ItemTool toolUsed = null)
         {
             if (requiredToolType == ToolType.None)
             {
@@ -28,6 +32,8 @@ namespace DefaultNamespace
 
             if (toolUsed && toolUsed.toolType == requiredToolType) TakeDamage(toolUsed.effectiveness);
         }
+
+        public event Action OnHarvest;
 
         public virtual void TakeDamage(float damageAmount)
         {
@@ -64,7 +70,7 @@ namespace DefaultNamespace
                 var spawnPosition = position + new Vector3(randomOffset.x, 0f, randomOffset.y);
                 var drop = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
                 var dropped = drop.GetComponent<DroppedItem>();
-                if (dropped)
+                if (dropped != null)
                     dropped.Initialize(item, 1);
                 else
                     Debug.Log($"{gameObject.name} dropped item {item} is not a dropped item.");

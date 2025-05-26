@@ -17,15 +17,11 @@ public class PlayerInteractions : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red, 1f);
 
-        if (!Physics.Raycast(ray, out var hitInfo, interactDistance, interactableLayer)) return;
-        var interactable = hitInfo.collider.GetComponent<InteractableObject>();
+        if (!Physics.Raycast(ray, out var hitInfo, interactDistance, interactableLayer))
+            return;
 
-        if (!interactable) return;
-        var canInteract = interactable.CheckInteractionDistance(gameObject);
-        if (canInteract) interactable.Interact(gameObject);
-        else
-            //TODO: do something else if cant interact based on distance
-            Debug.Log("Too far away, move closer!");
+        var interactable = hitInfo.collider.GetComponent<IInteractable>();
+        interactable?.Interact(gameObject);
     }
 
     public void EquipTool(string tool)

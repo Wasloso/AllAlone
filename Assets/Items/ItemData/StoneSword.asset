@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   title: Stone Sword
-  description: A generic item.
+  description: Stone sword
   icon: {fileID: 0}
   maxStackSize: 1
   statModifiers: []

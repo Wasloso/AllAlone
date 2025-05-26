@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,8 +7,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     public Item item;
     public Image image;
-    public int quantity;
+    public TMP_Text countText;
     [HideInInspector] public Transform parentAfterDrag;
+    public int count = 1;
 
     private void Start()
     {
@@ -38,11 +40,18 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = true;
     }
 
+    public void RefreshCount()
+    {
+        countText.text = count.ToString();
+        var textActive = count > 1;
+        countText.gameObject.SetActive(textActive);
+    }
 
-    private void InitializeItem(Item newItem)
+    public void InitializeItem(Item newItem, int quantity = 1)
     {
         item = newItem;
         image.sprite = newItem.icon;
-        quantity = 1;
+        count = quantity;
+        RefreshCount();
     }
 }

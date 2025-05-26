@@ -1,61 +1,51 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int slotCount = 20;
-    public List<InventorySlot> slots;
-
-    private void Awake()
-    {
-        slots = new List<InventorySlot>(slotCount);
-        for (var i = 0; i < slotCount; i++)
-            slots.Add(new InventorySlot());
-    }
+    public InventorySlot[] inventorySlots;
+    public GameObject inventoryItemPrefab;
+    public InventorySlot handSlot;
+    public InventorySlot headSlot;
+    public InventorySlot chestSlot;
 
     public bool AddItem(Item item, int quantity = 1)
     {
-        // Try stacking first
-        if (item.maxStackSize > 1)
-            foreach (var slot in slots)
+        for (var i = 0; i < inventorySlots.Length; i++)
+        {
+            var slot = inventorySlots[i];
+            var itemInSlot = slot.GetComponent<InventoryItem>();
+            if (itemInSlot == null) continue;
+            if (itemInSlot.item != item) continue;
+            if (itemInSlot.count < itemInSlot.item.maxStackSize)
             {
-                var slotItem = slot.inventoryItem;
-                if (slotItem.item == item && slotItem.quantity < item.maxStackSize)
-                {
-                    var addable = Mathf.Min(quantity, item.maxStackSize - slotItem.quantity);
-                    slotItem.quantity += addable;
-                    quantity -= addable;
-                    if (quantity <= 0)
-                        return true;
-                }
+                var maxQuantityToAdd = Math.Min(itemInSlot.item.maxStackSize - itemInSlot.count, quantity);
+                itemInSlot.count += maxQuantityToAdd;
+                quantity -= maxQuantityToAdd;
+                itemInSlot.RefreshCount();
+                if (quantity <= 0) return true;
             }
+        }
 
-        // Add to empty slots
-        // foreach (var slot in slots)
-        //     if (slot.IsEmpty)
-        //     {
-        //         
-        //         slot.inventoryItem = item;
-        //         slot.quantity = quantity;
-        //         return true;
-        //     }
+        for (var i = 0; i < inventorySlots.Length; i++)
+        {
+            var slot = inventorySlots[i];
+            var itemInSlot = slot.GetComponent<InventoryItem>();
+            if (itemInSlot == null)
+            {
+                SpawnNewItem(item, slot);
+                return true;
+            }
+        }
 
-        return false; // Inventory full
+        return false;
     }
-    //
-    // public void RemoveItem(Item item, int quantity = 1)
-    // {
-    //     foreach (var slot in slots)
-    //         if (slot.item == item)
-    //         {
-    //             slot.quantity -= quantity;
-    //             if (slot.quantity <= 0)
-    //             {
-    //                 slot.item = null;
-    //                 slot.quantity = 0;
-    //             }
-    //
-    //             return;
-    //         }
-    // }
+
+
+    private void SpawnNewItem(Item item, InventorySlot slot)
+    {
+        var newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        var inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.InitializeItem(item);
+    }
 }
