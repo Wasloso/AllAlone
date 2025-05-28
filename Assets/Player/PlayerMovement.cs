@@ -6,16 +6,19 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         public float moveSpeed = 5f;
+        private Animator _animator;
         private Camera _camera;
         private PlayerInputHandler _inputHandler;
 
         private InputAction _moveAction;
         private Vector2 _movement;
+        public Vector2 MovementInput => _movement;
 
         private void Awake()
         {
             _camera = Camera.main;
             _inputHandler = GetComponent<PlayerInputHandler>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
 
