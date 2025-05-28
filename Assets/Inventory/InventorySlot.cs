@@ -12,22 +12,80 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
     }
 
-    // Update is called once per frame
+
     private void Update()
     {
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        var dropped = eventData.pointerDrag.GetComponent<InventoryItem>();
-        if (dropped == null) return;
-        if (slotTag != SlotTag.None && dropped.item.slotTag != slotTag)
+        var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
+        if (droppedItem == null) return;
+
+
+        if (slotTag != SlotTag.None && droppedItem.item.slotTag != slotTag)
         {
-            Debug.Log($"Wrong slot! Item slot: {dropped.item.slotTag}, slot tag {slotTag} ");
+            Debug.Log(
+                $"❌ Can't place {droppedItem.item.title} in {slotTag} slot. Requires: {droppedItem.item.slotTag}");
             return;
         }
 
-        dropped.parentAfterDrag = transform;
-        inventoryItem = dropped;
+        var fromSlot = droppedItem.parentAfterDrag?.GetComponent<InventorySlot>();
+        var targetItem = inventoryItem;
+
+
+        if (targetItem == null)
+        {
+            droppedItem.parentAfterDrag = transform;
+            inventoryItem = droppedItem;
+
+            if (fromSlot != null)
+                fromSlot.inventoryItem = null;
+
+            return;
+        }
+
+
+        if (targetItem.item.id == droppedItem.item.id && targetItem.count < targetItem.item.maxStackSize)
+        {
+            var total = targetItem.count + droppedItem.count;
+            var max = targetItem.item.maxStackSize;
+
+            var overflow = Mathf.Max(0, total - max);
+            targetItem.count = Mathf.Min(total, max);
+            targetItem.RefreshCount();
+
+            if (overflow == 0)
+            {
+                Destroy(droppedItem.gameObject);
+                if (fromSlot != null)
+                    fromSlot.inventoryItem = null;
+            }
+            else
+            {
+                droppedItem.count = overflow;
+                droppedItem.RefreshCount();
+            }
+
+            return;
+        }
+
+
+
+        if (fromSlot != null && fromSlot.slotTag != SlotTag.None && targetItem.item.slotTag != fromSlot.slotTag)
+        {
+            Debug.Log(
+                $"❌ Can't move {targetItem.item.title} to {fromSlot.slotTag} slot. Requires: {targetItem.item.slotTag}");
+            return;
+        }
+
+
+        droppedItem.parentAfterDrag = transform;
+        targetItem.transform.SetParent(fromSlot.transform);
+        targetItem.transform.localPosition = Vector3.zero;
+
+
+        inventoryItem = droppedItem;
+        fromSlot.inventoryItem = targetItem;
     }
 }

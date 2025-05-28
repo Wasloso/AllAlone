@@ -19,8 +19,7 @@ public class DroppedItem : MonoBehaviour, IInteractable
         if (playerInventory == null) return;
         Debug.Log("Found player inventory");
 
-        playerInventory.AddItem(item, quantity);
-        Destroy(gameObject);
+        if (playerInventory.AddItem(item, quantity)) Destroy(gameObject);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

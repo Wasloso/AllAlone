@@ -14,9 +14,14 @@ public class PlayerInventory : MonoBehaviour
         for (var i = 0; i < inventorySlots.Length; i++)
         {
             var slot = inventorySlots[i];
-            var itemInSlot = slot.GetComponent<InventoryItem>();
-            if (itemInSlot == null) continue;
-            if (itemInSlot.item != item) continue;
+            var itemInSlot = slot.inventoryItem;
+            if (!itemInSlot || !itemInSlot.item) continue;
+            if (itemInSlot.item.id != item.id)
+            {
+                Debug.Log(itemInSlot.item.id + " doesn't equal " + item.id);
+                continue;
+            }
+
             if (itemInSlot.count < itemInSlot.item.maxStackSize)
             {
                 var maxQuantityToAdd = Math.Min(itemInSlot.item.maxStackSize - itemInSlot.count, quantity);
@@ -27,10 +32,12 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
+        Debug.Log("No mathes found for: " + item.name);
+
         for (var i = 0; i < inventorySlots.Length; i++)
         {
             var slot = inventorySlots[i];
-            var itemInSlot = slot.GetComponent<InventoryItem>();
+            var itemInSlot = slot.inventoryItem;
             if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
@@ -46,6 +53,7 @@ public class PlayerInventory : MonoBehaviour
     {
         var newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         var inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        slot.inventoryItem = inventoryItem;
         inventoryItem.InitializeItem(item);
     }
 }

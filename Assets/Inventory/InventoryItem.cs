@@ -24,10 +24,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentAfterDrag = transform.parent;
+
+        var oldSlot = parentAfterDrag.GetComponent<InventorySlot>();
+        if (oldSlot && oldSlot.inventoryItem == this)
+            oldSlot.inventoryItem = null;
+
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -37,8 +43,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
+        transform.localPosition = Vector3.zero;
         image.raycastTarget = true;
+
+        var slot = parentAfterDrag.GetComponent<InventorySlot>();
+        if (slot != null)
+            slot.inventoryItem = this;
     }
+
 
     public void RefreshCount()
     {
@@ -49,6 +61,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void InitializeItem(Item newItem, int quantity = 1)
     {
+        Debug.Log("Initializing item: " + newItem.name);
         item = newItem;
         image.sprite = newItem.icon;
         count = quantity;

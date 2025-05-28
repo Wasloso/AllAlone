@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  image: {fileID: 0}
+  image: {fileID: 1894032738560948955}
   countText: {fileID: 5241607995906675705}
   parentAfterDrag: {fileID: 0}
   count: 1
