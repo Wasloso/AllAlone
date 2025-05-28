@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     public LayerMask interactableLayer;
+    public float interactRadius = 5f;
     private readonly float interactDistance = 50f;
 
 
@@ -20,6 +21,9 @@ public class PlayerInteractions : MonoBehaviour
         if (!Physics.Raycast(ray, out var hitInfo, interactDistance, interactableLayer))
             return;
 
+        var distance = Vector3.Distance(transform.position, hitInfo.point);
+        if (distance > interactRadius)
+            return;
         var interactable = hitInfo.collider.GetComponent<IInteractable>();
         interactable?.Interact(gameObject);
     }

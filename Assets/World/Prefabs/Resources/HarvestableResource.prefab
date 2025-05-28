@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HarvestableResource
       objectReference: {fileID: 0}
+    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4202240457738750026, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
       propertyPath: m_Enabled
       value: 1

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ccfc9c830f41e09988911b96bcafa1, type: 3}
+  m_Name: WorldSettings
+  m_EditorClassIdentifier: 
+  numVoronoiCells: 100
+  voronoiPerlinBlendStrength: 0
+  worldWidth: 100
+  worldHeight: 100
+  seed: 0
+  noiseScale: 20
+  octaves: 4
+  persistence: 0.5
+  lacunarity: 2
+  allBiomes:
+  - {fileID: 11400000, guid: 6e8af5c7e1408224291804648290edfb, type: 2}
+  - {fileID: 11400000, guid: 30163fc89c391b7499dfa91ddcb31a8c, type: 2}
+  defaultBiome: {fileID: 11400000, guid: 66d9b155990cdf3479eb9a6b43901869, type: 2}
+  tileSize: 4
+  noiseOffset: {x: 0, y: 0}
