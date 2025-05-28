@@ -54,7 +54,6 @@ public class WorldGenerator : MonoBehaviour
         var worldCenter = new Vector2(settings.worldWidth / 2f, settings.worldHeight / 2f);
         var maxRadius = Mathf.Min(settings.worldWidth, settings.worldHeight) / 2f * 0.8f;
         _biomeAssignments = new BiomeData[settings.numVoronoiCells];
-        foreach (var cellPoint in cellPoints) Debug.Log(cellPoint);
         for (var i = 0; i < cellPoints.Length; i++)
         {
             var dist = Vector2.Distance(cellPoints[i], worldCenter);

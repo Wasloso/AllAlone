@@ -50,7 +50,6 @@ public class AutoBoxCollider : MonoBehaviour
         var worldCenter = rend.transform.TransformPoint(spriteBounds.center);
         col.center = transform.InverseTransformPoint(worldCenter);
 
-        Debug.Log($"[{gameObject.name}] BoxCollider size set to {col.size}, center set to {col.center}");
     }
 
     public void Refresh()
