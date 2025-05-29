@@ -1,17 +1,17 @@
 using UnityEngine;
 
-namespace Player.States
+namespace Enemy
 {
     public class IdleState : IState
     {
         private readonly Animator _animator;
+        private readonly Enemy _enemy;
         private readonly int _isWalking = Animator.StringToHash("isWalking");
-        private Player _player;
 
-        public IdleState(Player player, Animator animator)
+        public IdleState(Enemy enemy, Animator animator)
         {
-            _player = player;
             _animator = animator;
+            _enemy = enemy;
         }
 
         public void Tick()
@@ -20,7 +20,7 @@ namespace Player.States
 
         public void OnEnter()
         {
-            Debug.Log("Player is idle");
+            Debug.Log($"{_enemy.name} is idle");
         }
 
         public void OnExit()
