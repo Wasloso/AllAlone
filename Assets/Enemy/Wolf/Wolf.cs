@@ -6,6 +6,7 @@ namespace Enemy
     {
         [SerializeField] private float attackDamage;
         [SerializeField] private int maxHealth;
+
         private IInteractable _attackTarget;
         private HealthSystem _healthSystem;
 
@@ -19,9 +20,10 @@ namespace Enemy
             StateMachine = new StateMachine();
             walkTowardsState = new WalkTowardsTargetState(this, animator);
             var idleState = new IdleState(this, animator);
+            var searchForTargetState = new SerachForTargetState(this);
 
-            MoveTarget = new Vector3(10, 0, 10);
-            At(idleState, walkTowardsState, () => Vector3.Distance(transform.position, MoveTarget) > 0.1f);
+            At(idleState, searchForTargetState, () => boredTimer < 0f);
+            At(searchForTargetState, walkTowardsState, () => Vector3.Distance(transform.position, MoveTarget) > 0.1f);
             At(walkTowardsState, idleState, () => Vector3.Distance(transform.position, MoveTarget) < 0.1f);
             StateMachine.SetState(idleState);
         }
@@ -34,6 +36,7 @@ namespace Enemy
         private void Update()
         {
             StateMachine.Tick();
+            if (updateBoredTimer) boredTimer -= Time.deltaTime;
         }
 
         public new void Interact(GameObject interactor, ItemTool toolUsed = null)

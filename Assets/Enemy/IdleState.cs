@@ -21,10 +21,12 @@ namespace Enemy
         public void OnEnter()
         {
             Debug.Log($"{_enemy.name} is idle");
+            _enemy.ModifyBoredTimer(start: true, reset: true);
         }
 
         public void OnExit()
         {
+            _enemy.ModifyBoredTimer(true, reset: true);
         }
     }
 }
