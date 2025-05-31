@@ -36,13 +36,11 @@ namespace Player
             {
                 Vector3 directionToTarget = _interactablePosition - transform.position;
                 directionToTarget.y = 0f;
-                _animator.SetBool("isWalking", true);
                 if (directionToTarget.magnitude <= _interactableRadius)
                 {
                     Debug.Log($"Reached interactable at {_interactablePosition}");
                     _isMovingToInteractable = false;
                     _movement = Vector2.zero;
-                    _animator.SetBool("isWalking", false);
                     _onReachTarget?.Invoke();
                     return;
                 }
