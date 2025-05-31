@@ -39,14 +39,23 @@ namespace Player
 
             transform.position += moveDirection * (moveSpeed * Time.deltaTime);
         }
-
-        private void OnEnable()
+        private void Start()
         {
             _moveAction = _inputHandler.InputActions.Player.Move;
             _moveAction.Enable();
 
             _moveAction.performed += OnMovePerformed;
             _moveAction.canceled += OnMoveCanceled;
+        }
+
+        private void OnEnable()
+        {
+            //_moveAction = _inputHandler.InputActions.Player.Move;
+            //_moveAction.Enable();
+            //Debug.Log("PlayerMovement enabled");
+
+            //_moveAction.performed += OnMovePerformed;
+            //_moveAction.canceled += OnMoveCanceled;
         }
 
         private void OnMovePerformed(InputAction.CallbackContext context)
