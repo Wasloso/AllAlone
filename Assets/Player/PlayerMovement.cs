@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,12 @@ namespace Player
     public class PlayerMovement : MonoBehaviour
     {
         public float moveSpeed = 5f;
+
+        private bool _isMovingToInteractable = false;
+        private Vector3 _interactablePosition;
+        private float _interactableRadius;
+        private Action _onReachTarget;
+
         private Animator _animator;
         private Camera _camera;
         private PlayerInputHandler _inputHandler;
@@ -28,6 +35,24 @@ namespace Player
 
         private void Update()
         {
+
+            if (_isMovingToInteractable)
+            {
+                Vector3 directionToTarget = _interactablePosition - transform.position;
+                directionToTarget.y = 0f;
+                if (directionToTarget.magnitude <= _interactableRadius)
+                {
+                    Debug.Log($"Reached interactable at {_interactablePosition}");
+                    _isMovingToInteractable = false;
+                    _movement = Vector2.zero;
+                    _onReachTarget?.Invoke();
+                    return;
+                }
+
+                Vector3 localDirection = transform.InverseTransformDirection(directionToTarget.normalized);
+                _movement = new Vector2(localDirection.x, localDirection.z);
+
+            }
             var cameraForward = _camera.transform.forward;
             var cameraRight = _camera.transform.right;
 
@@ -55,12 +80,23 @@ namespace Player
 
         private void OnMovePerformed(InputAction.CallbackContext context)
         {
+            _isMovingToInteractable = false;
             _movement = context.ReadValue<Vector2>();
         }
 
         private void OnMoveCanceled(InputAction.CallbackContext context)
         {
+            _isMovingToInteractable = false;
             _movement = Vector2.zero;
+        }
+
+        internal void MoveToInteractable(Vector3 interactablePosition, float interactableRadius, Action onReachTarget)
+        {
+            Debug.Log($"Moving to interactable at {interactablePosition} with radius {interactableRadius}");
+            _isMovingToInteractable = true;
+            _interactablePosition = interactablePosition;
+            _interactableRadius = interactableRadius;
+            _onReachTarget = onReachTarget;
         }
     }
 }
