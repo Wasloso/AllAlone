@@ -57,10 +57,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         foreach (var resultItem in result)
         {
             slot = resultItem.gameObject.GetComponent<InventorySlot>();
+
             if (slot != null) break;
         }
-        if (slot != null)
+        if (slot != null )
         {
+            if (item.slotTag != slot.slotTag)
+            {
+                return;
+            }
             transform.SetParent(slot.transform);
             transform.localPosition = Vector3.zero;
             slot.inventoryItem = this;
