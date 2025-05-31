@@ -20,7 +20,6 @@ namespace Enemy
 
         public void OnEnter()
         {
-            Debug.Log($"{_enemy.name} is idle");
             _enemy.ModifyBoredTimer(start: true, reset: true);
         }
 

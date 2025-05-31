@@ -6,11 +6,11 @@ public class PlayerInteractions : MonoBehaviour
 {
     public LayerMask interactableLayer;
     public float interactRadius = 1f;
-    private readonly float interactDistance = 10f;
-
-    private PlayerMovement _playerMovement;
+    private readonly float searchForInteracablesDistance = 10f;
     private PlayerInputHandler _inputHandler;
     private InputAction _interactAction;
+
+    private PlayerMovement _playerMovement;
 
 
     private void Awake()
@@ -30,35 +30,41 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) // Left click
             TryInteract();
-
     }
 
     private void TryInteract()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red, 1f);
+        Debug.DrawRay(ray.origin, ray.direction * float.MaxValue, Color.red, 1f);
 
-        if (!Physics.Raycast(ray, out var hitInfo, interactDistance, interactableLayer))
+        if (!Physics.Raycast(ray, out var hitInfo, float.MaxValue, interactableLayer))
             return;
 
         var distance = Vector3.Distance(transform.position, hitInfo.point);
-        if (distance > interactRadius)
-            return;
-        var interactable = hitInfo.collider.GetComponent<IInteractable>();
-        interactable?.Interact(gameObject);
+
+        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable))
+        {
+            Debug.Log(hitInfo.collider.gameObject.name + " is interactable" + $"distance {distance}");
+
+            if (distance > interactRadius)
+                _playerMovement.MoveToInteractable(hitInfo.collider.transform.position, interactRadius,
+                    () => interactable?.Interact(gameObject));
+            else
+                interactable?.Interact(gameObject);
+        }
     }
 
     private void OnKeyboardInteract(InputAction.CallbackContext context)
     {
-        Collider[] interactables = Physics.OverlapSphere(transform.position, interactDistance, interactableLayer);
+        var interactables = Physics.OverlapSphere(transform.position, searchForInteracablesDistance, interactableLayer);
         if (interactables.Length == 0) return;
 
         Collider closestInteractable = null;
-        float closestDistance = float.MaxValue;
+        var closestDistance = float.MaxValue;
 
         foreach (var interactable in interactables)
         {
-            float distance = Vector3.Distance(transform.position, interactable.transform.position);
+            var distance = Vector3.Distance(transform.position, interactable.transform.position);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
@@ -66,13 +72,12 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
 
-        if ( closestInteractable != null)
+        if (closestInteractable != null)
         {
             var interactable = closestInteractable.GetComponent<IInteractable>();
-            _playerMovement.MoveToInteractable(closestInteractable.transform.position, interactRadius, () => interactable?.Interact(gameObject));
-
+            _playerMovement.MoveToInteractable(closestInteractable.transform.position, interactRadius,
+                () => interactable?.Interact(gameObject));
         }
-
     }
 
     public void EquipTool(string tool)
