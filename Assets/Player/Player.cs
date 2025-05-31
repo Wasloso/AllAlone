@@ -4,8 +4,6 @@ using System;
 using Player.States;
 using UnityEngine;
 
-// For Action (e.g., for general player events like OnPlayerInitialized)
-
 namespace Player // Keep your namespaces consistent!
 {
     public class Player : MonoBehaviour

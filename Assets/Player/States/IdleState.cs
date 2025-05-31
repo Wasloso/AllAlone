@@ -20,8 +20,7 @@ namespace Player.States
 
         public void OnEnter()
         {
-            Debug.Log("Enter idle state");
-            _animator.SetBool(_isWalking, false);
+            Debug.Log("Player is idle");
         }
 
         public void OnExit()

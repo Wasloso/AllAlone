@@ -25,7 +25,11 @@ namespace Player
         {
             _camera = Camera.main;
             _inputHandler = GetComponent<PlayerInputHandler>();
-            _animator = GetComponentInChildren<Animator>();
+        }
+
+        private void Start()
+        {
+            EnableActions();
         }
 
 
@@ -65,23 +69,13 @@ namespace Player
             transform.position += moveDirection * (moveSpeed * Time.deltaTime);
         }
 
-        private void Start()
+        private void EnableActions()
         {
-            _moveAction = _inputHandler.InputActions.Player.Move;
+            _moveAction = _inputHandler.PlayerMovementAction;
             _moveAction.Enable();
 
             _moveAction.performed += OnMovePerformed;
             _moveAction.canceled += OnMoveCanceled;
-        }
-
-        private void OnEnable()
-        {
-            //_moveAction = _inputHandler.InputActions.Player.Move;
-            //_moveAction.Enable();
-            //Debug.Log("PlayerMovement enabled");
-
-            //_moveAction.performed += OnMovePerformed;
-            //_moveAction.canceled += OnMoveCanceled;
         }
 
         private void OnMovePerformed(InputAction.CallbackContext context)
