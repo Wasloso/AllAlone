@@ -4,27 +4,30 @@ namespace Enemy
 {
     public class Wolf : Enemy
     {
-        [SerializeField] private float attackDamage;
-        [SerializeField] private int maxHealth;
-
         private IInteractable _attackTarget;
-        private HealthSystem _healthSystem;
-
 
         private IState walkTowardsState;
 
-        private void Awake()
+        protected new void Awake()
         {
-            _healthSystem = gameObject.GetComponent<HealthSystem>();
-            _healthSystem.Initialize(maxHealth);
+            base.Awake();
             StateMachine = new StateMachine();
             walkTowardsState = new WalkTowardsTargetState(this, animator);
             var idleState = new IdleState(this, animator);
-            var searchForTargetState = new SerachForTargetState(this);
+            var searchForTargetWanderAroundState = new SearchForTargetWanderAroundState(this);
+            var searchForAttackTargetState = new SearchForAttackTargetState();
+            var chaseState = new ChaseState(this, animator);
+            var attackState = new AttackState(this, animator);
 
-            At(idleState, searchForTargetState, () => boredTimer < 0f);
-            At(searchForTargetState, walkTowardsState, () => Vector3.Distance(transform.position, MoveTarget) > 0.1f);
+            At(idleState, searchForTargetWanderAroundState, () => boredTimer < 0f);
+            At(idleState, chaseState, () => CheckForTarget());
+            At(searchForTargetWanderAroundState, walkTowardsState,
+                () => Vector3.Distance(transform.position, MoveTarget) > 0.1f);
             At(walkTowardsState, idleState, () => Vector3.Distance(transform.position, MoveTarget) < 0.1f);
+            At(walkTowardsState, chaseState, () => CheckForTarget());
+            At(chaseState, attackState, IsTargetInRange);
+            At(attackState, chaseState, () => !IsTargetInRange());
+            At(chaseState, idleState, () => !CheckForTarget(1.5f));
             StateMachine.SetState(idleState);
         }
 
@@ -37,11 +40,6 @@ namespace Enemy
         {
             StateMachine.Tick();
             if (updateBoredTimer) boredTimer -= Time.deltaTime;
-        }
-
-        public new void Interact(GameObject interactor, ItemTool toolUsed = null)
-        {
-            _healthSystem.TakeDamage(5);
         }
     }
 }

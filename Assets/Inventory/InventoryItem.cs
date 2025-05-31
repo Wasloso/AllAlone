@@ -55,6 +55,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void RefreshCount()
     {
         countText.text = count.ToString();
+        Debug.Log("Refreshing count to " + count);
         var textActive = count > 1;
         countText.gameObject.SetActive(textActive);
     }

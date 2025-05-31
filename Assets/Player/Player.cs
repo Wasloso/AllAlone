@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Player // Keep your namespaces consistent!
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IDamageable
     {
         [Header("Player Systems")] public PlayerMovement _playerMovement;
 
@@ -20,6 +20,7 @@ namespace Player // Keep your namespaces consistent!
 
         private StateMachine _stateMachine;
 
+        public float AttackDamage => _attackStats.Value;
 
         [Header("Player Stats")] private ResourceStat HealthStats => _healthSystem.Health;
 
@@ -43,6 +44,16 @@ namespace Player // Keep your namespaces consistent!
         private void Update()
         {
             _stateMachine.Tick();
+        }
+
+        public Transform Transform => transform;
+        public Faction Faction => Faction.Player;
+        public bool IsAlive => _healthSystem.Health.Value > 0;
+        public bool CanBeAttacked { get; }
+
+        public void TakeDamage(float amount)
+        {
+            _healthSystem?.TakeDamage(amount);
         }
 
 
@@ -69,11 +80,6 @@ namespace Player // Keep your namespaces consistent!
 
                 _ => null
             };
-        }
-
-        public void TakeDamage(float amount)
-        {
-            _healthSystem?.TakeDamage(amount);
         }
 
         public void Eat(float amount)
