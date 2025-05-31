@@ -1,29 +1,29 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace  Player
+namespace Player
 {
-    
     public class PlayerInputHandler : MonoBehaviour
     {
-
         public PlayerInputActions InputActions { get; private set; }
+        public InputAction PlayerMovementAction => InputActions.Player.Move;
 
-        void Awake()
+        private void Awake()
         {
             InputActions = new PlayerInputActions();
         }
 
-        void OnEnable()
+        private void OnEnable()
         {
             InputActions.Player.Enable();
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             InputActions.Player.Disable();
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             InputActions.Dispose();
         }
