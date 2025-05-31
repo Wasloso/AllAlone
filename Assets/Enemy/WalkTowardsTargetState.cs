@@ -31,7 +31,9 @@ namespace Enemy
             var direction = _enemy.MoveTarget - _enemy.transform.position;
             direction.y = 0f;
             direction.Normalize();
+#if UNITY_EDITOR
             Debug.Log(direction);
+#endif
 
             _enemy.transform.position += direction * _enemy.speed * Time.deltaTime;
 
