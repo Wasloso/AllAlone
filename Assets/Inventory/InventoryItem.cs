@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +10,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Item item;
     public Image image;
     public TMP_Text countText;
+    public GameObject droppedItemPrefab;
     [HideInInspector] public Transform parentAfterDrag;
     public int count = 1;
 
@@ -46,9 +49,56 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.localPosition = Vector3.zero;
         image.raycastTarget = true;
 
-        var slot = parentAfterDrag.GetComponent<InventorySlot>();
-        if (slot != null)
+        var result = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, result);
+
+        InventorySlot slot = null;
+
+        foreach (var resultItem in result)
+        {
+            slot = resultItem.gameObject.GetComponent<InventorySlot>();
+
+            if (slot != null) break;
+        }
+        if (slot != null )
+        {
+            if (item.slotTag != slot.slotTag)
+            {
+                return;
+            }
+            transform.SetParent(slot.transform);
+            transform.localPosition = Vector3.zero;
             slot.inventoryItem = this;
+            parentAfterDrag = slot.transform;
+        }
+        else
+            Drop(eventData.position);
+
+    }
+
+    public void Drop(Vector2 screenPosition)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Vector3 worldPos = hit.point;
+
+            for (int i = 0; i < count; i++)
+            {
+                worldPos.x += 0.1f * i; 
+                worldPos.z += 0.1f * i; 
+                var drop = Instantiate(droppedItemPrefab, worldPos, Quaternion.identity);
+                var dropped = drop.GetComponent<DroppedItem>();
+                if (dropped != null)
+                {
+                    dropped.Initialize(item, 1);
+                    Debug.Log($"Dropped {item.name} at {worldPos}");
+                }
+
+                Destroy(gameObject);
+            }
+        }
     }
 
 
