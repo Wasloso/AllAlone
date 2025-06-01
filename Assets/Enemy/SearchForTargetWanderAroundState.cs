@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class SerachForTargetState : IState
+    public class SearchForTargetWanderAroundState : IState
     {
         private readonly Enemy _enemy;
 
-        public SerachForTargetState(Enemy enemy
+        public SearchForTargetWanderAroundState(Enemy enemy
         )
         {
             _enemy = enemy;
@@ -19,7 +19,6 @@ namespace Enemy
 
         public void OnEnter()
         {
-            Debug.Log("SerachForTargetState.OnEnter");
             _enemy.FindNewTarget();
         }
 

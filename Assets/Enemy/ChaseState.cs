@@ -2,20 +2,17 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class WalkTowardsTargetState : IState
+    public class ChaseState : IState
     {
         private readonly Animator _animator;
         private readonly Enemy _enemy;
 
         private readonly int _isWalking = Animator.StringToHash("isWalking");
-        private readonly float _waitDuration = 2f;
         private readonly int _X = Animator.StringToHash("X");
         private readonly int _Z = Animator.StringToHash("Z");
-        private bool _isWaiting;
+        private IDamageable _target;
 
-        private float _waitTimer;
-
-        public WalkTowardsTargetState(Enemy enemy, Animator animator)
+        public ChaseState(Enemy enemy, Animator animator)
         {
             _enemy = enemy;
             _animator = animator;
@@ -23,20 +20,23 @@ namespace Enemy
 
         public void OnEnter()
         {
+            _target = _enemy.CurrentTarget;
             _animator.SetBool(_isWalking, true);
         }
 
         public void Tick()
         {
-            var direction = _enemy.MoveTarget - _enemy.transform.position;
-            direction.y = 0f;
+            if (_target == null || !_target.IsAlive)
+                return;
+
+            var direction = _target.Transform.position - _enemy.transform.position;
+            direction.y = 0;
             direction.Normalize();
 
             _enemy.transform.position += direction * _enemy.speed * Time.deltaTime;
 
             _animator.SetFloat(_X, direction.x);
             _animator.SetFloat(_Z, direction.z);
-            _animator.SetBool(_isWalking, true);
         }
 
         public void OnExit()

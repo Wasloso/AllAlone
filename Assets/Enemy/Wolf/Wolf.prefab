@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4210784458504786161, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.34
+      value: 5.3333335
       objectReference: {fileID: 0}
     - target: {fileID: 5008275160810532628, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_Size.x
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008275160810532628, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_Center.y
-      value: 2.34
+      value: 5.3333335
       objectReference: {fileID: 0}
     - target: {fileID: 5545734448391531168, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_Name
@@ -127,9 +127,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49b1b81b9a106e459090ec5af7b61a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1950271719880774563}
-  attackDamage: 1
+  animator: {fileID: 0}
+  speed: 0
+  MoveTarget: {x: 0, y: 0, z: 0}
+  maxBoredTime: 30
+  boredTimer: 0
+  updateBoredTimer: 1
+  itemDrops:
+  - item: {fileID: 11400000, guid: 7c75559603219b640beeeff57bc58dd6, type: 2}
+    minQuantity: 1
+    maxQuantity: 10
   maxHealth: 10
+  attackRange: 0.5
+  detectionRange: 5
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackDamage: 1
+  droppedItemPrefab: {fileID: 2419407849854492215, guid: c2358ddaaab8590408a59d12df3b81c0, type: 3}
 --- !u!114 &742636535654369847
 MonoBehaviour:
   m_ObjectHideFlags: 0
