@@ -6,13 +6,12 @@ namespace Enemy
     {
         private IInteractable _attackTarget;
 
-        private IState walkTowardsState;
 
         protected new void Awake()
         {
             base.Awake();
             StateMachine = new StateMachine();
-            walkTowardsState = new WalkTowardsTargetState(this, animator);
+            var walkTowardsState = new WalkTowardsTargetState(this, animator);
             var idleState = new IdleState(this, animator);
             var searchForTargetWanderAroundState = new SearchForTargetWanderAroundState(this);
             var searchForAttackTargetState = new SearchForAttackTargetState();
