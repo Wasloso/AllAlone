@@ -45,12 +45,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6b0ba3ef17a62404d985ccc14f6d9c95, type: 3}
     - target: {fileID: 5872883567703415005, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872883567703415005, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872883567703415005, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5872883567703415005, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 3bd1bc63764c216438e4a4c5ba752cb7, type: 3}
     - target: {fileID: 6074688135706739341, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -32.11
       objectReference: {fileID: 0}
     - target: {fileID: 6074688135706739341, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -127,10 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49b1b81b9a106e459090ec5af7b61a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  speed: 0
+  animator: {fileID: 1950271719880774563}
+  speed: 4
   MoveTarget: {x: 0, y: 0, z: 0}
-  maxBoredTime: 30
+  maxBoredTime: 10
   boredTimer: 0
   updateBoredTimer: 1
   itemDrops:
@@ -138,7 +150,7 @@ MonoBehaviour:
     minQuantity: 1
     maxQuantity: 10
   maxHealth: 10
-  attackRange: 0.5
+  attackRange: 1
   detectionRange: 5
   targetLayer:
     serializedVersion: 2
