@@ -47,6 +47,45 @@ public class PlayerInventory : MonoBehaviour
 
         return false;
     }
+    public int CountItem(Item item)
+    {
+        int total = 0;
+        foreach (var slot in inventorySlots)
+        {
+            if (slot.inventoryItem != null && slot.inventoryItem.item == item)
+            {
+                total += slot.inventoryItem.count;
+            }
+        }
+        return total;
+    }
+
+    public void RemoveItem(Item item, int quantity)
+    {
+        foreach (var slot in inventorySlots)
+        {
+            var i = slot.inventoryItem;
+            if (i != null && i.item == item)
+            {
+                int toRemove = Mathf.Min(quantity, i.count);
+                i.count -= toRemove;
+                quantity -= toRemove;
+
+                if (i.count == 0)
+                {
+                    Destroy(i.gameObject);
+                    slot.inventoryItem = null;
+                }
+                else
+                {
+                    i.RefreshCount();
+                }
+
+                if (quantity <= 0) return;
+            }
+        }
+    }
+
 
 
     private void SpawnNewItem(Item item, InventorySlot slot)

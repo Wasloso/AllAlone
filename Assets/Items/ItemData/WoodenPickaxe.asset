@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928af44d7c3e46d44be54c2f95ecc4c4, type: 3}
+  m_Name: WoodenPickaxe
+  m_EditorClassIdentifier: 
+  id: d08b7da2-5cf2-466b-8132-27a5a6b468d0
+  title: Stone Pickaxe
+  description: Stone Pickaxe
+  icon: {fileID: 8168027293871005872, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
+  maxStackSize: 1
+  statModifiers: []
+  itemType: 3
+  slotTag: 3
+  effectiveness: 1
+  toolType: 1

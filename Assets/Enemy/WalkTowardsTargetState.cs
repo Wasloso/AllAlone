@@ -32,7 +32,6 @@ namespace Enemy
             direction.y = 0f;
             direction.Normalize();
 
-
             _enemy.transform.position += direction * _enemy.speed * Time.deltaTime;
 
             _animator.SetFloat(_X, direction.x);

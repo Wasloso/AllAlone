@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewReciepie", menuName = "Reciepies/New Reciepie")]
 public class Reciepie : ScriptableObject
 {
-    public Item outputItem;
     public List<IngredientEntry> ingredients;
+    public Item outputItem;
+    public int outputQuantity = 1;
 }
