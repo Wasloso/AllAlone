@@ -22,6 +22,9 @@ MonoBehaviour:
   - objectPrefab: {fileID: 1812441866680132112, guid: 712fd9591f090d646a047163cefc776b, type: 3}
     spawnChance: 0.137
     spawnOncePerArea: 0
+  - objectPrefab: {fileID: 2896653003722504953, guid: a49bb69d192e6854d96294da10d366be, type: 3}
+    spawnChance: 0.137
+    spawnOncePerArea: 0
   elevationRange: {x: 0, y: 0.25}
   temperatureRange: {x: 0, y: 0.5}
   humidityRange: {x: 0.4, y: 0.6}
