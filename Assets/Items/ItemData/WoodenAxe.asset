@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
-  m_Name: Line
+  m_Script: {fileID: 11500000, guid: 928af44d7c3e46d44be54c2f95ecc4c4, type: 3}
+  m_Name: WoodenAxe
   m_EditorClassIdentifier: 
   id: 
   title: New Item
@@ -20,3 +20,5 @@ MonoBehaviour:
   statModifiers: []
   itemType: 0
   slotTag: 0
+  effectiveness: 1
+  toolType: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   title: Grass
   description: Grass
   icon: {fileID: 4354133572485782140, guid: 5d024871fbc1e724596c64e73a5514ae, type: 3}
-  maxStackSize: 64
+  maxStackSize: 40
   statModifiers: []
   itemType: 5
   slotTag: 0

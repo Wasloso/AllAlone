@@ -53,7 +53,7 @@ public class RecipeItemView : MonoBehaviour
         {
             sb.Append($"{ing.quantity}x {ing.item.name}, ");
         }
-        //ingredientsText.text = sb.ToString().TrimEnd(',', ' ');
+        ingredientsText.text = sb.ToString().TrimEnd(',', ' ');
 
         craftButton.onClick.AddListener(() =>
         {

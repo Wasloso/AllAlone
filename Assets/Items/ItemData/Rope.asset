@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
-  m_Name: WoodenArmor
+  m_Name: Rope
   m_EditorClassIdentifier: 
-  id: New Item
-  title: New Item
-  description: A generic item.
-  icon: {fileID: 0}
-  maxStackSize: 1
+  id: rope
+  title: Rope
+  description: Rope used to craft more items.
+  icon: {fileID: 8662384261516989540, guid: bc5aba4f944ab03438c07c7ceda6685a, type: 3}
+  maxStackSize: 20
   statModifiers: []
-  itemType: 2
-  slotTag: 2
+  itemType: 5
+  slotTag: 0
