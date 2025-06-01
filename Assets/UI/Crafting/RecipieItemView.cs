@@ -47,7 +47,6 @@ public class RecipeItemView : MonoBehaviour
         resultName.text = recipe.outputItem.name;
         craftButton.image.sprite = recipe.outputItem.icon;
 
-        // Budujemy string z wymaganiami
         StringBuilder sb = new StringBuilder();
         foreach (var ing in recipe.ingredients)
         {
