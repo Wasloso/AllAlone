@@ -32,7 +32,7 @@ namespace Enemy
             direction.y = 0f;
             direction.Normalize();
 #if UNITY_EDITOR
-            Debug.Log(direction);
+            //Debug.Log(direction);
 #endif
 
             _enemy.transform.position += direction * _enemy.speed * Time.deltaTime;
