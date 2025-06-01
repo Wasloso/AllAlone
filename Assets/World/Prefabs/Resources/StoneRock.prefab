@@ -12,22 +12,38 @@ PrefabInstance:
       propertyPath: requiredToolType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -70933083599176678, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
+      propertyPath: itemDrops.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -70933083599176678, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
+      propertyPath: itemDrops.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: a3e00571522ad06458b570f644dcc5e4, type: 2}
+    - target: {fileID: -70933083599176678, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
+      propertyPath: itemDrops.Array.data[0].maxQuantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -70933083599176678, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
+      propertyPath: itemDrops.Array.data[0].minQuantity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2104303436823326729, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Name
       value: StoneRock
       objectReference: {fileID: 0}
     - target: {fileID: 2585175894595265136, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Size.x
-      value: 2.01
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 2585175894595265136, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Size.y
-      value: 1.4
+      value: 1.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 2585175894595265136, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8394617589692673577, guid: 14b359b740b3ade4fad95c100d5cdd64, type: 3}
+      objectReference: {fileID: 87725470165636201, guid: 5d024871fbc1e724596c64e73a5514ae, type: 3}
     - target: {fileID: 2585175894595265136, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -38,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5365255918052556654, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Size.x
-      value: 2.01
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 5365255918052556654, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Size.y
-      value: 1.4
+      value: 1.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 5365255918052556654, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Size.z
@@ -50,7 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5365255918052556654, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_Center.y
-      value: 0.7
+      value: 0.93333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559757811863910825, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.93333334
       objectReference: {fileID: 0}
     - target: {fileID: 7970172820480761556, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d965ad0006bd6a74288c910b24819f45, type: 3}
-  m_Name: StonePickaxeReciepie
+  m_Name: WoodenPickaxe
   m_EditorClassIdentifier: 
   outputItem: {fileID: 11400000, guid: d8f0b0ddb74ac7e45a3fc7288d688c16, type: 2}
   ingredients:

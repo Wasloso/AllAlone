@@ -17,7 +17,10 @@ MonoBehaviour:
   additionalGroundTiles: []
   objectSpawns:
   - objectPrefab: {fileID: 7795315095876841820, guid: d54e002f247bfa949a8274d5e6d047f8, type: 3}
-    spawnChance: 0.015
+    spawnChance: 0.103
+    spawnOncePerArea: 0
+  - objectPrefab: {fileID: 1812441866680132112, guid: 712fd9591f090d646a047163cefc776b, type: 3}
+    spawnChance: 0.137
     spawnOncePerArea: 0
   elevationRange: {x: 0, y: 0.25}
   temperatureRange: {x: 0, y: 0.5}
