@@ -11,6 +11,7 @@ namespace Enemy
         private readonly Enemy _enemy;
         private float _lastAttackTime;
         private IDamageable _target;
+        public bool HasAttacked;
 
         public AttackState(Enemy enemy, Animator animator)
         {
@@ -21,7 +22,8 @@ namespace Enemy
         public void OnEnter()
         {
             _target = _enemy.CurrentTarget;
-            _lastAttackTime = -_attackCooldown; // allows immediate first attack
+            _lastAttackTime = -_attackCooldown;
+            HasAttacked = false;
         }
 
         public void Tick()
@@ -29,29 +31,33 @@ namespace Enemy
             if (_target == null || !_target.IsAlive)
                 return;
 
-            // Face the target
-            var direction = _target.Transform.position - _enemy.transform.position;
-            direction.y = 0;
-            if (direction != Vector3.zero)
-                _enemy.transform.forward = direction.normalized;
 
-            if (Time.time - _lastAttackTime >= _attackCooldown)
+            if (!(Time.time - _lastAttackTime >= _attackCooldown)) return;
+            if (DealDamage())
             {
-                DealDamage();
                 _lastAttackTime = Time.time;
+                HasAttacked = true;
+                return;
             }
+
+            HasAttacked = false;
         }
 
         public void OnExit()
         {
-            // Optional: reset animation triggers
+            HasAttacked = false;
         }
 
-        // Call this from an animation event (e.g., at the hit frame)
-        public void DealDamage()
+        public bool DealDamage()
         {
             if (_target != null && Vector3.Distance(_enemy.transform.position, _target.Transform.position) <=
-                _enemy.attackRange) _target.TakeDamage(_enemy.attackDamage);
+                _enemy.attackRange)
+            {
+                _target.TakeDamage(_enemy.attackDamage);
+                return true;
+            }
+
+            return false;
         }
     }
 }
