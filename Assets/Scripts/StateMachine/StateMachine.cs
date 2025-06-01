@@ -20,8 +20,8 @@ public class StateMachine
     private readonly List<Transition> _anyTransitions = new();
 
     private readonly Dictionary<Type, List<Transition>> _transitions = new();
-    private IState _currentState;
     private List<Transition> _currentTransitions = new();
+    public IState CurrentState { get; set; }
 
     public void Tick()
     {
@@ -29,22 +29,22 @@ public class StateMachine
         if (transition != null)
             SetState(transition.To);
 
-        _currentState?.Tick();
+        CurrentState?.Tick();
     }
 
     public void SetState(IState state)
     {
-        if (state == _currentState)
+        if (state == CurrentState)
             return;
 
-        _currentState?.OnExit();
-        _currentState = state;
+        CurrentState?.OnExit();
+        CurrentState = state;
 
-        _transitions.TryGetValue(_currentState.GetType(), out _currentTransitions);
+        _transitions.TryGetValue(CurrentState.GetType(), out _currentTransitions);
         if (_currentTransitions == null)
             _currentTransitions = EmptyTransitions;
 
-        _currentState.OnEnter();
+        CurrentState.OnEnter();
     }
 
     public void AddTransition(IState from, IState to, Func<bool> predicate)
