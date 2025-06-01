@@ -127,6 +127,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5545734448391531168, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7185296307533655622}
+    - targetCorrespondingSourceObject: {fileID: 5545734448391531168, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8890096739554255958}
     - targetCorrespondingSourceObject: {fileID: 8091955671744953267, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6711195654065444632}
@@ -148,6 +151,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af972b854fb24bd45b449a249be21b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8890096739554255958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455700450342333285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0faf6e254760304fbb3ea05af687b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6711195654065444632}
+  speed: 4
+  MoveTarget: {x: 0, y: 0, z: 0}
+  maxBoredTime: 30
+  boredTimer: 0
+  updateBoredTimer: 1
+  itemDrops: []
+  maxHealth: 30
+  attackRange: 0.5
+  detectionRange: 50
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackDamage: 10
+  droppedItemPrefab: {fileID: 0}
+  stalkTime: 10
+  currentStalkTime: 0
+  stalkRange: 10
 --- !u!1 &2921042917203212918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8091955671744953267, guid: 669ea2b841eeeaf4da48abbcc7160a4c, type: 3}
