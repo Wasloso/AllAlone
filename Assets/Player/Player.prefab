@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8334684718935395875}
   - component: {fileID: 298114778857443644}
-  - component: {fileID: 3920898161878121068}
   - component: {fileID: 6171236408926989443}
   - component: {fileID: 2160806921972583352}
   - component: {fileID: 2324015079596813469}
@@ -21,7 +20,7 @@ GameObject:
   - component: {fileID: 3582457356735359723}
   - component: {fileID: 1540454940325903840}
   - component: {fileID: 5488863606380646978}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -65,28 +64,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9, y: 3.3, z: 0.2}
   m_Center: {x: 0, y: 1.65, z: 0}
---- !u!95 &3920898161878121068
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6406876045094531828}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb55d6a8649cb674fadcb07b21073d06, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6171236408926989443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f9dbd85f5a4424bffcc1e3fbc84409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMovement: {fileID: 0}
-  _healthSystem: {fileID: 0}
-  _hungerSystem: {fileID: 0}
-  animator: {fileID: 0}
+  _playerMovement: {fileID: 4923946457975732464}
+  _healthSystem: {fileID: 301803007458102307}
+  _hungerSystem: {fileID: 1579928419265170163}
+  animator: {fileID: 2641332155838994386}
 --- !u!114 &3582457356735359723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +225,8 @@ GameObject:
   - component: {fileID: 7704684527077140380}
   - component: {fileID: 50578184005079760}
   - component: {fileID: 3255528517712706190}
-  m_Layer: 6
+  - component: {fileID: 2641332155838994386}
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,3 +316,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateInEditor: 1
+--- !u!95 &2641332155838994386
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452254941120881570}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb55d6a8649cb674fadcb07b21073d06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -1109,6 +1109,9 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 10
   droppedItemPrefab: {fileID: 0}
+  stalkTime: 10
+  currentStalkTime: 0
+  stalkRange: 10
 --- !u!4 &451121348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1333047651558087262, guid: 6e6ebb29baff3a44783be74212a481ac, type: 3}
@@ -3560,7 +3563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6406876045094531828, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8334684718935395875, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3604,7 +3607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8452254941120881570, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3920898161878121068, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
@@ -3843,10 +3846,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6202558500679584814, guid: 6e6ebb29baff3a44783be74212a481ac, type: 3}
       propertyPath: dayDurationInMinutes
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6202558500679584814, guid: 6e6ebb29baff3a44783be74212a481ac, type: 3}
-      propertyPath: dayDurationInMinutes
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6806742441752165576, guid: 6e6ebb29baff3a44783be74212a481ac, type: 3}
@@ -4056,29 +4055,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 426480302}
   m_SourcePrefab: {fileID: 100100000, guid: ca3bcd2aecf69f64198a3bab91f40d8b, type: 3}
---- !u!95 &6745437525474639638
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345805128273996164}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb55d6a8649cb674fadcb07b21073d06, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &8321652603357952177
 --- !u!1001 &6524408486409331682
 PrefabInstance:
   m_ObjectHideFlags: 0
