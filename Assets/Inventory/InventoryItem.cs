@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -60,34 +59,34 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
             if (slot != null) break;
         }
-        if (slot != null )
+
+        if (slot != null)
         {
-            if (item.slotTag != slot.slotTag)
-            {
-                return;
-            }
+            if (item.slotTag != slot.slotTag) return;
             transform.SetParent(slot.transform);
             transform.localPosition = Vector3.zero;
             slot.inventoryItem = this;
             parentAfterDrag = slot.transform;
         }
         else
+        {
             Drop(eventData.position);
-
+        }
     }
+
 
     public void Drop(Vector2 screenPosition)
     {
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        var ray = Camera.main.ScreenPointToRay(screenPosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out var hit))
         {
-            Vector3 worldPos = hit.point;
+            var worldPos = hit.point;
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
-                worldPos.x += 0.1f * i; 
-                worldPos.z += 0.1f * i; 
+                worldPos.x += 0.1f * i;
+                worldPos.z += 0.1f * i;
                 var drop = Instantiate(droppedItemPrefab, worldPos, Quaternion.identity);
                 var dropped = drop.GetComponent<DroppedItem>();
                 if (dropped != null)
@@ -116,6 +115,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         item = newItem;
         image.sprite = newItem.icon;
         count = quantity;
+
         RefreshCount();
     }
 }

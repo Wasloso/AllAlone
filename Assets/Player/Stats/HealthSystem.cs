@@ -1,7 +1,8 @@
 using System;
+using Items;
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IConsumableReciever
 {
     public ResourceStat Health { get; private set; }
     public float MaxHealth => Health.Value;
@@ -10,6 +11,11 @@ public class HealthSystem : MonoBehaviour
     private void OnDestroy()
     {
         if (Health != null) Health.OnCurrentValueChanged -= OnHealthChanged;
+    }
+
+    public void Consume(ItemConsumable consumable)
+    {
+        Health.ModifyCurrent(consumable.restoreHealth);
     }
 
     public event Action<float, float> OnHealthChanged; // (currentHealth, maxHealth)
@@ -29,11 +35,6 @@ public class HealthSystem : MonoBehaviour
         if (Health.CurrentValue <= 0) Die();
     }
 
-    public void Heal(float amount)
-    {
-        Health.ModifyCurrent(amount);
-        Debug.Log($"Healed {amount}");
-    }
 
     private void Die()
     {

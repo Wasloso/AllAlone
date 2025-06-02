@@ -1,8 +1,9 @@
 using System;
+using Items;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class HungerSystem : MonoBehaviour
+public class HungerSystem : MonoBehaviour, IConsumableReciever
 {
     [Header("Hunger Settings")] [SerializeField]
     private float decayRatePerSecond = 1f;
@@ -32,6 +33,11 @@ public class HungerSystem : MonoBehaviour
         if (CurrentHunger <= 0) _healthSystem.TakeDamage(starvationDamagePerSecond * Time.deltaTime);
     }
 
+    public void Consume(ItemConsumable consumable)
+    {
+        Hunger.ModifyCurrent(consumable.restoreHunger);
+    }
+
     public event Action<float, float> OnHungerChanged;
 
 
@@ -52,10 +58,6 @@ public class HungerSystem : MonoBehaviour
         Debug.Log($"HungerSystem Initialized. Base Hunger: {baseHunger}", this);
     }
 
-    public void Eat(float value)
-    {
-        Hunger.ModifyCurrent(value);
-    }
 
     private void HandleCurrentHungerChanged(float oldCurrentValue, float newCurrentValue)
     {
@@ -66,4 +68,9 @@ public class HungerSystem : MonoBehaviour
     {
         OnHungerChanged?.Invoke(CurrentHunger, newMaxValue);
     }
+}
+
+public interface IConsumableReciever
+{
+    public void Consume(ItemConsumable consumable);
 }

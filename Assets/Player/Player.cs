@@ -1,12 +1,13 @@
 // Player.cs (or PlayerController.cs, PlayerManager.cs)
 
 using System;
+using Items;
 using Player.States;
 using UnityEngine;
 
 namespace Player // Keep your namespaces consistent!
 {
-    public class Player : MonoBehaviour, IDamageable
+    public class Player : MonoBehaviour, IDamageable, IConsumableReciever
     {
         [Header("Player Systems")] public PlayerMovement _playerMovement;
 
@@ -79,6 +80,12 @@ namespace Player // Keep your namespaces consistent!
             _stateMachine.Tick();
         }
 
+        public void Consume(ItemConsumable consumable)
+        {
+            _healthSystem.Consume(consumable);
+            _hungerSystem.Consume(consumable);
+        }
+
         public Transform Transform => transform;
         public Faction Faction => Faction.Player;
         public bool IsAlive => _healthSystem.Health.Value > 0;
@@ -124,10 +131,6 @@ namespace Player // Keep your namespaces consistent!
             };
         }
 
-        public void Eat(float amount)
-        {
-            _hungerSystem?.Eat(amount);
-        }
 
         private void At(IState from, IState to, Func<bool> condition)
         {
