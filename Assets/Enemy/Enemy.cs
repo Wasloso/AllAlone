@@ -60,7 +60,7 @@ namespace Enemy
             return true;
         }
 
-        public void Interact(GameObject interactor, ItemTool toolUsed = null)
+        public void Interact(GameObject interactor, Item itemUsed = null)
         {
             Debug.Log($"Interact with {gameObject.name}");
             if (interactor.TryGetComponent<Player.Player>(out var player))

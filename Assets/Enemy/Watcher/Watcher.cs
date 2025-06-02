@@ -46,7 +46,6 @@ namespace Enemy.Watcher
         private void Update()
         {
             StateMachine.Tick();
-            Debug.Log(StateMachine.CurrentState);
             if (updateBoredTimer) boredTimer -= Time.deltaTime;
         }
     }

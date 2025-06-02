@@ -22,7 +22,7 @@ namespace DefaultNamespace
             return true;
         }
 
-        public void Interact(GameObject interactor, ItemTool toolUsed = null)
+        public void Interact(GameObject interactor, Item itemUsed = null)
         {
             if (requiredToolType == ToolType.None)
             {
@@ -30,7 +30,17 @@ namespace DefaultNamespace
                 return;
             }
 
-            if (toolUsed && toolUsed.toolType == requiredToolType) TakeDamage(toolUsed.effectiveness);
+            if (!itemUsed)
+            {
+                Debug.Log($"Cannot harvest {gameObject.name}. Requires a {requiredToolType}, but nothing is equipped.");
+                return;
+            }
+
+            if (itemUsed is ItemTool tool && tool.toolType == requiredToolType)
+                TakeDamage(tool.effectiveness);
+            else
+                Debug.Log(
+                    $"Cannot harvest {gameObject.name}. Requires a {requiredToolType}, but used {itemUsed.title} (Type: {itemUsed.itemType}).");
         }
 
         public event Action OnHarvest;

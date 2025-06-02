@@ -12,7 +12,7 @@ public class DroppedItem : MonoBehaviour, IInteractable
         return true;
     }
 
-    public void Interact(GameObject interactor, ItemTool toolUsed = null)
+    public void Interact(GameObject interactor, Item itemUsed = null)
     {
         Debug.Log("Interact with dropped item");
         var playerInventory = interactor.GetComponent<PlayerInventory>();
