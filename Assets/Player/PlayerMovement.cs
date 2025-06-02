@@ -35,23 +35,6 @@ namespace Player
 
         private void Update()
         {
-            // if (_isMovingToInteractable)
-            // {
-            //     Vector3 directionToTarget = _interactablePosition - transform.position;
-            //     directionToTarget.y = 0f;
-            //     if (directionToTarget.magnitude <= _interactableRadius)
-            //     {
-            //         Debug.Log($"Reached interactable at {_interactablePosition}");
-            //         _isMovingToInteractable = false;
-            //         _movement = Vector2.zero;
-            //         _onReachTarget?.Invoke();
-            //         return;
-            //     }
-            //
-            //     Vector3 localDirection = transform.InverseTransformDirection(directionToTarget.normalized);
-            //     _movement = new Vector2(localDirection.x, localDirection.z);
-            //
-            // }
             var cameraForward = _camera.transform.forward;
             var cameraRight = _camera.transform.right;
 
