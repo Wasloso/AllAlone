@@ -21,6 +21,7 @@ namespace Enemy.Watcher
             var attackState = new AttackState(this, animator);
             var rapidChaseState = new RapidChaseState(this, animator);
             var moveAwayAfterAttackState = new MoveAwayAfterAttackState(this, animator);
+            var deathState = new DeathState(this, animator, Die);
 
 
             At(idleState, searchForTargetWanderAroundState, () => boredTimer < 0f);
@@ -31,10 +32,12 @@ namespace Enemy.Watcher
             At(walkTowardsState, stalkState, () => CheckForTarget());
             At(searchForTargetWanderAroundState, stalkState, () => CheckForTarget());
             At(stalkState, rapidChaseState, () => currentStalkTime >= stalkTime);
-            At(rapidChaseState, attackState, IsTargetInRange);
-            At(attackState, moveAwayAfterAttackState, () => attackState.HasAttacked);
+            At(rapidChaseState, attackState, () => attackState.CheckAttackTimer && IsTargetInRange());
+            At(attackState, moveAwayAfterAttackState, () => attackState.Finished);
             At(moveAwayAfterAttackState, stalkState, () => moveAwayAfterAttackState.Completed);
             At(stalkState, idleState, () => !stalkState.IsStalking);
+            _healthSystem.OnDied += () => { StateMachine.SetState(deathState); };
+
             StateMachine.SetState(idleState);
         }
 
