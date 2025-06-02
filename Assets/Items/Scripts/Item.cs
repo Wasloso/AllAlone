@@ -24,7 +24,7 @@ public class Item : ScriptableObject
 
     private void OnValidate()
     {
-        if (string.IsNullOrEmpty(id)) id = title;
+        if (string.IsNullOrEmpty(id)) id = title + Guid.NewGuid();
     }
 }
 

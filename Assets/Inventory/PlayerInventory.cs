@@ -97,6 +97,42 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public bool RemoveItemFromSlot(int slotIndex, int quantity = 1)
+    {
+        if (slotIndex < 0 || slotIndex >= inventorySlots.Length)
+        {
+            Debug.LogWarning($" Invalid slot index {slotIndex} for removal.");
+            return false;
+        }
+
+        var slot = inventorySlots[slotIndex];
+        if (slot.inventoryItem == null || slot.inventoryItem.item == null)
+        {
+            Debug.LogWarning($"No item in slot {slotIndex} to remove.");
+            return false;
+        }
+
+        if (slot.inventoryItem.count < quantity)
+        {
+            Debug.LogWarning(
+                $"Not enough items in slot {slotIndex} to remove {quantity}. Has: {slot.inventoryItem.count}");
+            return false;
+        }
+
+        slot.inventoryItem.count -= quantity;
+        if (slot.inventoryItem.count <= 0)
+        {
+            Destroy(slot.inventoryItem.gameObject);
+            slot.inventoryItem = null;
+        }
+        else
+        {
+            slot.inventoryItem.RefreshCount();
+        }
+
+        return true;
+    }
+
 
     private void SpawnNewItem(Item item, InventorySlot slot)
     {
