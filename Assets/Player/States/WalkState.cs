@@ -22,11 +22,11 @@ namespace Player.States
             var input = _player._playerMovement.MovementInput;
             _animator.SetFloat(_X, input.x);
             _animator.SetFloat(_Z, input.y);
+            _player.playerInteractions.ClearTarget();
         }
 
         public void OnEnter()
         {
-            Debug.Log("Ender walk state");
             _animator.SetBool(_isWalking, true);
         }
 

@@ -8,17 +8,17 @@ namespace Player
     {
         public float moveSpeed = 5f;
 
-        private bool _isMovingToInteractable = false;
-        private Vector3 _interactablePosition;
-        private float _interactableRadius;
-        private Action _onReachTarget;
-
         private Animator _animator;
         private Camera _camera;
         private PlayerInputHandler _inputHandler;
+        private Vector3 _interactablePosition;
+        private float _interactableRadius;
+
+        private bool _isMovingToInteractable;
 
         private InputAction _moveAction;
         private Vector2 _movement;
+        private Action _onReachTarget;
         public Vector2 MovementInput => _movement;
 
         private void Awake()
@@ -35,24 +35,23 @@ namespace Player
 
         private void Update()
         {
-
-            if (_isMovingToInteractable)
-            {
-                Vector3 directionToTarget = _interactablePosition - transform.position;
-                directionToTarget.y = 0f;
-                if (directionToTarget.magnitude <= _interactableRadius)
-                {
-                    Debug.Log($"Reached interactable at {_interactablePosition}");
-                    _isMovingToInteractable = false;
-                    _movement = Vector2.zero;
-                    _onReachTarget?.Invoke();
-                    return;
-                }
-
-                Vector3 localDirection = transform.InverseTransformDirection(directionToTarget.normalized);
-                _movement = new Vector2(localDirection.x, localDirection.z);
-
-            }
+            // if (_isMovingToInteractable)
+            // {
+            //     Vector3 directionToTarget = _interactablePosition - transform.position;
+            //     directionToTarget.y = 0f;
+            //     if (directionToTarget.magnitude <= _interactableRadius)
+            //     {
+            //         Debug.Log($"Reached interactable at {_interactablePosition}");
+            //         _isMovingToInteractable = false;
+            //         _movement = Vector2.zero;
+            //         _onReachTarget?.Invoke();
+            //         return;
+            //     }
+            //
+            //     Vector3 localDirection = transform.InverseTransformDirection(directionToTarget.normalized);
+            //     _movement = new Vector2(localDirection.x, localDirection.z);
+            //
+            // }
             var cameraForward = _camera.transform.forward;
             var cameraRight = _camera.transform.right;
 

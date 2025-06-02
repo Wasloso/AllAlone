@@ -55,7 +55,9 @@ namespace Enemy
             TakeDamage(amount);
         }
 
-        public bool CanInteract(GameObject interactor)
+        public InteractionAnimationType AnimationType => InteractionAnimationType.Attack;
+
+        public bool CanInteract(GameObject interactor, Item itemUsed = null)
         {
             return true;
         }
