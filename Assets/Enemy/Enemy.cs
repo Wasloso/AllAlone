@@ -35,8 +35,6 @@ namespace Enemy
         {
             _healthSystem = gameObject.GetComponent<HealthSystem>();
             _healthSystem.Initialize(maxHealth);
-            _healthSystem.OnDied += Die;
-            _healthSystem.OnDied += DropLoot;
         }
 
 
