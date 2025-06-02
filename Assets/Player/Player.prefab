@@ -154,7 +154,7 @@ MonoBehaviour:
   _playerMovement: {fileID: 4923946457975732464}
   _healthSystem: {fileID: 301803007458102307}
   _hungerSystem: {fileID: 1579928419265170163}
-  animator: {fileID: 2641332155838994386}
+  animator: {fileID: 7660363429246773815}
 --- !u!114 &3582457356735359723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 7704684527077140380}
   - component: {fileID: 50578184005079760}
   - component: {fileID: 3255528517712706190}
-  - component: {fileID: 2641332155838994386}
+  - component: {fileID: 7660363429246773815}
   m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
@@ -256,8 +256,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8452254941120881570}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -271,7 +271,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: -876546973899608171, guid: 3bd1bc63764c216438e4a4c5ba752cb7, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateInEditor: 1
---- !u!95 &2641332155838994386
+--- !u!95 &7660363429246773815
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
