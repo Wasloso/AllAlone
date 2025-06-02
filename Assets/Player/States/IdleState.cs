@@ -6,7 +6,7 @@ namespace Player.States
     {
         private readonly Animator _animator;
         private readonly int _isWalking = Animator.StringToHash("isWalking");
-        private Player _player;
+        private readonly Player _player;
 
         public IdleState(Player player, Animator animator)
         {
@@ -20,7 +20,7 @@ namespace Player.States
 
         public void OnEnter()
         {
-            Debug.Log("Player is idle");
+            _player.playerInteractions.ClearTarget();
         }
 
         public void OnExit()

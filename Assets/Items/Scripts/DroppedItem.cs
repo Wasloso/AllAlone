@@ -7,7 +7,9 @@ public class DroppedItem : MonoBehaviour, IInteractable
     private Item item;
     private int quantity;
 
-    public bool CanInteract(GameObject interactor)
+    public InteractionAnimationType AnimationType => InteractionAnimationType.Pickup;
+
+    public bool CanInteract(GameObject interactor, Item itemUsed = null)
     {
         return true;
     }

@@ -12,6 +12,7 @@ public class PlayerInteractions : MonoBehaviour
     private PlayerInventory _playerInventory;
 
     private PlayerMovement _playerMovement;
+    public GameObject Target { get; private set; }
 
 
     private void Awake()
@@ -36,6 +37,7 @@ public class PlayerInteractions : MonoBehaviour
 
     private void TryInteract()
     {
+        Target = null;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * float.MaxValue, Color.red, 1f);
 
@@ -44,16 +46,7 @@ public class PlayerInteractions : MonoBehaviour
 
         var distance = Vector3.Distance(transform.position, hitInfo.point);
 
-        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable))
-        {
-            var heldItem = _playerInventory.GetEquippedItem(SlotTag.Hand);
-
-            if (distance > interactRadius)
-                _playerMovement.MoveToInteractable(hitInfo.collider.transform.position, interactRadius,
-                    () => interactable?.Interact(gameObject, heldItem));
-            else
-                interactable?.Interact(gameObject, heldItem);
-        }
+        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable)) Target = hitInfo.collider.gameObject;
     }
 
     private void OnKeyboardInteract(InputAction.CallbackContext context)
@@ -74,11 +67,11 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
 
-        if (closestInteractable != null)
-        {
-            var interactable = closestInteractable.GetComponent<IInteractable>();
-            _playerMovement.MoveToInteractable(closestInteractable.transform.position, interactRadius,
-                () => interactable?.Interact(gameObject));
-        }
+        if (closestInteractable != null) Target = closestInteractable.gameObject;
+    }
+
+    public void ClearTarget()
+    {
+        Target = null;
     }
 }

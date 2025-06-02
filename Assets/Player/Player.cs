@@ -13,6 +13,8 @@ namespace Player // Keep your namespaces consistent!
         [SerializeField] private HealthSystem _healthSystem;
         [SerializeField] private HungerSystem _hungerSystem;
         [SerializeField] private Animator animator;
+        public PlayerInteractions playerInteractions;
+        public PlayerInventory _playerInventory;
         private PlayerStat _attackStats;
         private PlayerStat _defenseStats;
         private Item _lastEquippedChestItem;
@@ -20,7 +22,6 @@ namespace Player // Keep your namespaces consistent!
         private Item _lastEquippedHeadItem;
 
         private PlayerStat _movementStats;
-        private PlayerInventory _playerInventory;
 
         private StateMachine _stateMachine;
 
@@ -30,6 +31,7 @@ namespace Player // Keep your namespaces consistent!
 
         private ResourceStat HungerStats => _hungerSystem.Hunger;
         public bool CanBeAttacked { get; }
+        public float speed => _playerMovement.moveSpeed;
 
 
         private void Awake()
@@ -39,10 +41,36 @@ namespace Player // Keep your namespaces consistent!
 
             var idle = new IdleState(this, animator);
             var walk = new WalkState(this, animator);
+            var moveTo = new WalkTowardsTargetState(this, animator);
+            var attack = new AttackState(this, animator);
+            var interact = new InteractState(this, animator);
 
 
-            _stateMachine.AddAnyTransition(idle, () => _playerMovement.MovementInput.magnitude < 0.1f);
-            _stateMachine.AddAnyTransition(walk, () => _playerMovement.MovementInput.magnitude > 0.1f);
+            _stateMachine.AddTransition(walk, idle, () => _playerMovement.MovementInput.magnitude < 0.1f);
+
+
+            _stateMachine.AddTransition(moveTo, idle,
+                () => !playerInteractions.Target);
+
+            _stateMachine.AddAnyTransition(attack, () =>
+                playerInteractions.Target &&
+                playerInteractions.Target.TryGetComponent<IDamageable>(out _) &&
+                Vector3.Distance(transform.position, playerInteractions.Target.transform.position) <=
+                playerInteractions.interactRadius * 0.9f);
+            _stateMachine.AddTransition(attack, idle, () => !playerInteractions.Target);
+            _stateMachine.AddAnyTransition(moveTo,
+                () => playerInteractions.Target &&
+                      Vector3.Distance(transform.position, playerInteractions.Target.transform.position) >=
+                      playerInteractions.interactRadius && _playerMovement.MovementInput.magnitude < 0.1f
+            );
+            _stateMachine.AddAnyTransition(interact, () =>
+                playerInteractions.Target &&
+                !playerInteractions.Target.TryGetComponent<IDamageable>(out _) &&
+                Vector3.Distance(transform.position, playerInteractions.Target.transform.position) <=
+                playerInteractions.interactRadius);
+            _stateMachine.AddTransition(interact, idle, () => !playerInteractions.Target);
+            _stateMachine.AddAnyTransition(walk,
+                () => _playerMovement.MovementInput.magnitude > 0.1f);
             _stateMachine.SetState(idle);
         }
 
@@ -70,6 +98,7 @@ namespace Player // Keep your namespaces consistent!
             _attackStats = new PlayerStat(2);
             _defenseStats = new PlayerStat(0);
             _playerInventory = GetComponent<PlayerInventory>();
+            playerInteractions = GetComponent<PlayerInteractions>();
 
             _healthSystem?.Initialize(100);
             _hungerSystem?.Initialize(150);

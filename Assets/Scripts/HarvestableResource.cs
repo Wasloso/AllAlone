@@ -8,6 +8,7 @@ namespace DefaultNamespace
 {
     public class HarvestableResource : MonoBehaviour, IInteractable
     {
+        [SerializeField] private InteractionAnimationType interactionAnimationType = InteractionAnimationType.Attack;
         public GameObject droppedItemPrefab;
         public ToolType requiredToolType = ToolType.None;
 
@@ -17,9 +18,13 @@ namespace DefaultNamespace
         public List<ItemDropEntry> itemDrops;
 
 
-        public bool CanInteract(GameObject interactor)
+        public InteractionAnimationType AnimationType => interactionAnimationType;
+
+        public bool CanInteract(GameObject interactor, Item itemUsed = null)
         {
-            return true;
+            if (requiredToolType == ToolType.None) return true;
+            if (itemUsed is ItemTool tool && tool.toolType == requiredToolType) return true;
+            return false;
         }
 
         public void Interact(GameObject interactor, Item itemUsed = null)
