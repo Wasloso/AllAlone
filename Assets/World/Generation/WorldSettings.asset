@@ -24,6 +24,7 @@ MonoBehaviour:
   allBiomes:
   - {fileID: 11400000, guid: 6e8af5c7e1408224291804648290edfb, type: 2}
   - {fileID: 11400000, guid: 30163fc89c391b7499dfa91ddcb31a8c, type: 2}
+  - {fileID: 11400000, guid: 16ca4bc536e3d9742a48837146738c29, type: 2}
   defaultBiome: {fileID: 11400000, guid: 66d9b155990cdf3479eb9a6b43901869, type: 2}
   tileSize: 4
   noiseOffset: {x: 0, y: 0}

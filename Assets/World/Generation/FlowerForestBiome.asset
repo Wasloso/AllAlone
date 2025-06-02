@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab5f1cbf73b2bc43af5e662b3b6156d, type: 3}
+  m_Name: FlowerForestBiome
+  m_EditorClassIdentifier: 
+  biomeName: Flower Forest Biome
+  primaryGroundPrefab: {fileID: 6584107025375165194, guid: aee51664747dbaf43b971f6c9782def9, type: 3}
+  additionalGroundTiles: []
+  objectSpawns:
+  - objectPrefab: {fileID: 4695585320405683351, guid: e047e881cc3bc534b854746793574639, type: 3}
+    spawnChance: 0.02
+    spawnOncePerArea: 0
+  - objectPrefab: {fileID: 7795315095876841820, guid: d54e002f247bfa949a8274d5e6d047f8, type: 3}
+    spawnChance: 0.06
+    spawnOncePerArea: 0
+  elevationRange: {x: 0, y: 1}
+  temperatureRange: {x: 0, y: 1}
+  humidityRange: {x: 0, y: 1}
+  riverSpawnInfluence: 0.5
