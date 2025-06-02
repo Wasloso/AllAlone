@@ -45,7 +45,8 @@ public class RecipeItemView : MonoBehaviour
             return;
         }
         resultName.text = recipe.outputItem.name;
-        craftButton.image.sprite = recipe.outputItem.icon;
+        if (recipe.outputItem.icon != null)
+            craftButton.image.sprite = recipe.outputItem.icon;
 
         StringBuilder sb = new StringBuilder();
         foreach (var ing in recipe.ingredients)
