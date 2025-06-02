@@ -3,5 +3,5 @@ using UnityEngine;
 public interface IInteractable
 {
     public bool CanInteract(GameObject interactor);
-    public void Interact(GameObject interactor, ItemTool toolUsed = null);
+    public void Interact(GameObject interactor, Item itemUsed = null);
 }

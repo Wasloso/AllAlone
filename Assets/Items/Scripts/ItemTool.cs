@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewTool", menuName = "Items/Tool", order = 3)]
-public class ItemTool : Item // Renamed from ToolItemData to match pattern
+public class ItemTool : ItemWithStats
 {
     public float effectiveness = 1f; // How much "damage" or effectiveness this tool has per hit
 

@@ -35,7 +35,6 @@ namespace Enemy.Watcher
 
             var distanceFromTarget =
                 Vector3.Distance(_watcher.transform.position, _watcher.CurrentTarget.Transform.position);
-            Debug.Log($"Distance: {distanceFromTarget}");
             if (distanceFromTarget < _watcher.stalkRange / 2f)
             {
                 var direction = _target.Transform.position - _watcher.transform.position;

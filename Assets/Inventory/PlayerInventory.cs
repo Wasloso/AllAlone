@@ -9,6 +9,19 @@ public class PlayerInventory : MonoBehaviour
     public InventorySlot headSlot;
     public InventorySlot chestSlot;
 
+
+    private void Awake()
+    {
+        if (handSlot != null) handSlot.OnItemChanged += HandleHandSlotItemChanged;
+        if (headSlot != null) headSlot.OnItemChanged += HandleHeadSlotChanged;
+        if (chestSlot != null) chestSlot.OnItemChanged += HandleChestSlotItemChanged;
+    }
+
+    public event Action<SlotTag, Item> OnHandSlotChanged;
+    public event Action<SlotTag, Item> OnChestSlotChanged;
+    public event Action<SlotTag, Item> OnHeadSlotChanged;
+
+
     public bool AddItem(Item item, int quantity = 1)
     {
         for (var i = 0; i < inventorySlots.Length; i++)
@@ -47,16 +60,14 @@ public class PlayerInventory : MonoBehaviour
 
         return false;
     }
+
     public int CountItem(Item item)
     {
-        int total = 0;
+        var total = 0;
         foreach (var slot in inventorySlots)
-        {
             if (slot.inventoryItem != null && slot.inventoryItem.item == item)
-            {
                 total += slot.inventoryItem.count;
-            }
-        }
+
         return total;
     }
 
@@ -67,7 +78,7 @@ public class PlayerInventory : MonoBehaviour
             var i = slot.inventoryItem;
             if (i != null && i.item == item)
             {
-                int toRemove = Mathf.Min(quantity, i.count);
+                var toRemove = Mathf.Min(quantity, i.count);
                 i.count -= toRemove;
                 quantity -= toRemove;
 
@@ -87,12 +98,48 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-
     private void SpawnNewItem(Item item, InventorySlot slot)
     {
         var newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         var inventoryItem = newItemGo.GetComponent<InventoryItem>();
         slot.inventoryItem = inventoryItem;
         inventoryItem.InitializeItem(item);
+    }
+
+    private void HandleHandSlotItemChanged()
+    {
+        var currentEquippedItem = GetEquippedItem(SlotTag.Hand);
+        OnHandSlotChanged?.Invoke(SlotTag.Hand, currentEquippedItem);
+    }
+
+    private void HandleChestSlotItemChanged()
+    {
+        var currentEquippedItem = GetEquippedItem(SlotTag.Chest);
+        OnChestSlotChanged?.Invoke(SlotTag.Chest, currentEquippedItem);
+    }
+
+    private void HandleHeadSlotChanged()
+    {
+        var currentEquippedItem = GetEquippedItem(SlotTag.Head);
+        OnHeadSlotChanged?.Invoke(SlotTag.Head, currentEquippedItem);
+    }
+
+
+    public Item GetEquippedItem(SlotTag slotTag)
+    {
+        switch (slotTag)
+        {
+            case SlotTag.Head:
+                if (headSlot != null && headSlot.inventoryItem != null) return headSlot.inventoryItem.item;
+                return null;
+            case SlotTag.Chest:
+                if (chestSlot != null && chestSlot.inventoryItem != null) return chestSlot.inventoryItem.item;
+                return null;
+            case SlotTag.Hand:
+                if (handSlot != null && handSlot.inventoryItem != null) return handSlot.inventoryItem.item;
+                return null;
+        }
+
+        return null;
     }
 }

@@ -15,7 +15,6 @@ namespace Player
         {
             BaseValue = baseValue;
             _modifiers = new List<StatModifier>();
-            Debug.Log($"PlayerStat BaseValue: {BaseValue}");
         }
 
         public float Value
@@ -50,17 +49,41 @@ namespace Player
 
         protected virtual float CalculateFinalValue()
         {
-            var finalValue = BaseValue;
-            float percentSum = 0;
-            _modifiers.ForEach(modifier =>
-            {
-                var modifierValue = modifier.Value;
-                if (modifier.Type == StatModifierType.Flat)
-                    finalValue += modifierValue;
-                else if (modifier.Type == StatModifierType.Percent) percentSum += modifierValue;
-            });
+            var replacementValue = float.MinValue;
+            var flatSum = 0f;
+            var percentSum = 0f;
+
+            foreach (var modifier in _modifiers)
+                switch (modifier.Type)
+                {
+                    case StatModifierType.Replacement:
+                        if (modifier.Value > replacementValue)
+                            replacementValue = modifier.Value;
+                        break;
+
+                    case StatModifierType.Flat:
+                        flatSum += modifier.Value;
+                        break;
+
+                    case StatModifierType.Percent:
+                        percentSum += modifier.Value;
+                        break;
+                }
+
+            var finalValue = replacementValue > float.MinValue ? replacementValue : BaseValue;
+
+            finalValue += flatSum;
             finalValue *= 1 + percentSum;
+
             return (float)Math.Round(finalValue, 4);
+        }
+
+        public void RemoveAllModifiersFromSource(object source)
+        {
+            if (source == null) return;
+
+            _modifiers.RemoveAll(modifier => modifier.Source == source);
+            _isDirty = true;
         }
     }
 }

@@ -10,8 +10,7 @@ public class ResourceStat : PlayerStat
     {
         MinValue = minValue;
         _currentValue = baseValue;
-        Debug.Log(
-            $"Created resource stat! Base value: {baseValue}, Min value: {minValue}, Current value: {_currentValue}");
+   
     }
 
     public float CurrentValue

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +14,13 @@ public class Item : ScriptableObject
     public Sprite icon;
     public int maxStackSize = 16;
 
-    [Header("Modifiers")] public List<StatModifierEntry> statModifiers;
 
     [Header("Item Type")] public ItemType itemType = ItemType.Generic;
     [Header("Slot tag")] public SlotTag slotTag = SlotTag.None;
+    [NonSerialized] public List<StatModifier> compiledModifiers = new();
 
     public bool Stackable => maxStackSize > 1;
+
 
     private void OnValidate()
     {

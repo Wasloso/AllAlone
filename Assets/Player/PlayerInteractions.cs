@@ -9,6 +9,7 @@ public class PlayerInteractions : MonoBehaviour
     private readonly float searchForInteracablesDistance = 10f;
     private PlayerInputHandler _inputHandler;
     private InputAction _interactAction;
+    private PlayerInventory _playerInventory;
 
     private PlayerMovement _playerMovement;
 
@@ -17,6 +18,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _inputHandler = GetComponent<PlayerInputHandler>();
+        _playerInventory = GetComponent<PlayerInventory>();
     }
 
     private void Start()
@@ -44,13 +46,13 @@ public class PlayerInteractions : MonoBehaviour
 
         if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable))
         {
-            Debug.Log(hitInfo.collider.gameObject.name + " is interactable" + $"distance {distance}");
+            var heldItem = _playerInventory.GetEquippedItem(SlotTag.Hand);
 
             if (distance > interactRadius)
                 _playerMovement.MoveToInteractable(hitInfo.collider.transform.position, interactRadius,
-                    () => interactable?.Interact(gameObject));
+                    () => interactable?.Interact(gameObject, heldItem));
             else
-                interactable?.Interact(gameObject);
+                interactable?.Interact(gameObject, heldItem);
         }
     }
 
@@ -78,10 +80,5 @@ public class PlayerInteractions : MonoBehaviour
             _playerMovement.MoveToInteractable(closestInteractable.transform.position, interactRadius,
                 () => interactable?.Interact(gameObject));
         }
-    }
-
-    public void EquipTool(string tool)
-    {
-        Debug.Log($"Equipped: {tool}");
     }
 }

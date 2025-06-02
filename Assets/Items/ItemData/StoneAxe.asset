@@ -20,5 +20,5 @@ MonoBehaviour:
   statModifiers: []
   itemType: 3
   slotTag: 3
-  effectiveness: 1
+  effectiveness: 2
   toolType: 0

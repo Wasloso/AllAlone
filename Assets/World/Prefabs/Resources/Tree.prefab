@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -70933083599176678, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: requiredToolType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -70933083599176678, guid: a68be5c4a352bbd4e80bf93f00a0d44f, type: 3}
       propertyPath: itemDrops.Array.size

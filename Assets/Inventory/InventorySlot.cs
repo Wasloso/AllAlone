@@ -1,12 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    public InventoryItem inventoryItem;
     public SlotTag slotTag = SlotTag.None;
+    private InventoryItem _inventoryItem;
     public bool IsEmpty => inventoryItem == null || inventoryItem.count == 0;
 
+    public InventoryItem inventoryItem
+    {
+        get => _inventoryItem;
+        set
+        {
+            _inventoryItem = value;
+            OnItemChanged?.Invoke();
+        }
+    }
 
     private void Start()
     {
@@ -71,7 +81,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
 
 
-
         if (fromSlot != null && fromSlot.slotTag != SlotTag.None && targetItem.item.slotTag != fromSlot.slotTag)
         {
             Debug.Log(
@@ -88,4 +97,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         inventoryItem = droppedItem;
         fromSlot.inventoryItem = targetItem;
     }
+
+    public event Action OnItemChanged;
 }
