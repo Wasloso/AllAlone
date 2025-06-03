@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    [Header("UI Elements")] [SerializeField]
-    private Slider healthSlider;
+    [Header("UI Elements")]
 
     [SerializeField] private TextMeshProUGUI healthText;
 
@@ -52,14 +51,8 @@ public class HealthBarUI : MonoBehaviour
 
     private void UpdateHealthDisplay(float currentHealth, float maxHealth)
     {
-        if (healthSlider)
-        {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = currentHealth;
-        }
-
         if (healthText)
-            healthText.text = $"{Mathf.CeilToInt(currentHealth)} / {Mathf.CeilToInt(maxHealth)}";
+            healthText.text = $"{Mathf.CeilToInt(currentHealth)}/{Mathf.CeilToInt(maxHealth)}";
     }
 
 

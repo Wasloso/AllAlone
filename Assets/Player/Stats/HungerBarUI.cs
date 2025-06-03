@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class HungerBarUI : MonoBehaviour
 {
-    [Header("UI Elements")] [SerializeField]
-    private Slider hungerSlider;
+    [Header("UI Elements")]
 
     [SerializeField] private TextMeshProUGUI hungerText;
 
@@ -48,15 +47,8 @@ public class HungerBarUI : MonoBehaviour
 
     private void UpdateHungerDisplay(float currentHealth, float maxHealth)
     {
-        if (hungerSlider)
-        {
-            hungerSlider.maxValue = maxHealth;
-            hungerSlider.value = currentHealth;
-        }
-
         if (hungerText)
-
-            hungerText.text = $"{Mathf.CeilToInt(currentHealth)} / {Mathf.CeilToInt(maxHealth)}";
+            hungerText.text = $"{Mathf.CeilToInt(currentHealth)}/{Mathf.CeilToInt(maxHealth)}";
     }
 
 
