@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55477b64d37981d4a8c9a1b21d1edb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTime: 0
-  dayDurationInMinutes: 1
+  currentTime: 12
+  dayDurationInMinutes: 15
 --- !u!114 &7960906485588098814
 MonoBehaviour:
   m_ObjectHideFlags: 0
