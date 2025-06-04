@@ -33,7 +33,7 @@ public class CraftingUI : MonoBehaviour
 
     void PopulateRecipes()
     {
-        contentParent.sizeDelta = new Vector2(contentParent.sizeDelta.x, allRecipes.Count * 160);
+        //contentParent.sizeDelta = new Vector2(contentParent.sizeDelta.x, allRecipes.Count * 160);
         foreach (Transform child in contentParent)
             Destroy(child.gameObject);
 
