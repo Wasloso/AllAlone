@@ -36,7 +36,8 @@ public enum ItemType
     Tool,
     Consumable,
     Resource,
-    Artifact
+    Artifact,
+    LightSource
 }
 
 public enum SlotTag
