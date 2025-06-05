@@ -62,12 +62,14 @@ namespace Player
 
         private void OnMovePerformed(InputAction.CallbackContext context)
         {
+            if (Time.timeScale == 0f) return;
             _isMovingToInteractable = false;
             _movement = context.ReadValue<Vector2>();
         }
 
         private void OnMoveCanceled(InputAction.CallbackContext context)
         {
+            if (Time.timeScale == 0f) return;
             _isMovingToInteractable = false;
             _movement = Vector2.zero;
         }

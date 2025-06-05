@@ -1,3 +1,4 @@
+using Sounds;
 using UnityEngine;
 
 namespace Player.States
@@ -6,6 +7,7 @@ namespace Player.States
     {
         private readonly Animator _animator;
         private readonly Player _player;
+
 
         public WalkState(Player player, Animator animator)
         {
@@ -23,6 +25,7 @@ namespace Player.States
             _animator.SetFloat(_X, input.x);
             _animator.SetFloat(_Z, input.y);
             _player.playerInteractions.ClearTarget();
+            
         }
 
         public void OnEnter()
@@ -34,5 +37,7 @@ namespace Player.States
         {
             _animator.SetBool(_isWalking, false);
         }
+
+
     }
 }
