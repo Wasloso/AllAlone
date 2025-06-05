@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,18 +18,33 @@ namespace Player
         {
             InputActions.Player.Enable();
             InputActions.Building.Enable();
+            InputActions.UI.Enable();
+
+            InputActions.UI.Pause.performed += OnPause;
         }
 
         private void OnDisable()
         {
             InputActions.Player.Disable();
             InputActions.Building.Disable();
+
+            InputActions.UI.Disable();
+
+            InputActions.UI.Pause.performed -= OnPause;
         }
 
         private void OnDestroy()
         {
             InputActions.Dispose();
 
+        }
+
+        public event Action OnPausePressed;
+
+        private void OnPause(InputAction.CallbackContext context)
+        {
+            Debug.Log("OnPause");
+            OnPausePressed?.Invoke();
         }
     }
 }

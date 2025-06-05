@@ -7,13 +7,13 @@ public class PlayerInteractions : MonoBehaviour
     public LayerMask interactableLayer;
     public float interactRadius = 1f;
     private readonly float searchForInteracablesDistance = 10f;
+    private InputAction _clickAction;
     private PlayerInputHandler _inputHandler;
     private InputAction _interactAction;
     private PlayerInventory _playerInventory;
 
     private PlayerMovement _playerMovement;
     public GameObject Target { get; private set; }
-
 
     private void Awake()
     {
@@ -27,12 +27,13 @@ public class PlayerInteractions : MonoBehaviour
         _interactAction = _inputHandler.InputActions.Player.Interact;
         _interactAction.Enable();
         _interactAction.performed += OnKeyboardInteract;
+        _clickAction = _inputHandler.InputActions.Player.Click;
+        _clickAction.Enable();
+        _clickAction.performed += OnClickPerformed;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left click
-            TryInteract();
     }
 
     private void TryInteract()
@@ -73,5 +74,10 @@ public class PlayerInteractions : MonoBehaviour
     public void ClearTarget()
     {
         Target = null;
+    }
+
+    private void OnClickPerformed(InputAction.CallbackContext context)
+    {
+        TryInteract();
     }
 }
