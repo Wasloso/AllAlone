@@ -12,7 +12,7 @@ public class RecipeItemView : MonoBehaviour
     public TextMeshProUGUI ingredientsText;
     public Button craftButton;
 
-    private Reciepie recipe;
+    private Recipe recipe;
     private CraftingManager craftingManager;
 
     public void Awake()
@@ -28,7 +28,7 @@ public class RecipeItemView : MonoBehaviour
 
     }
 
-    public void Setup(Reciepie recipe, CraftingManager manager)
+    public void Setup(Recipe recipe, CraftingManager manager)
     {
         this.recipe = recipe;
         craftingManager = manager;
@@ -44,9 +44,9 @@ public class RecipeItemView : MonoBehaviour
             Debug.LogError("UI components are not assigned correctly.");
             return;
         }
-        resultName.text = recipe.outputItem.name;
-        if (recipe.outputItem.icon != null)
-            craftButton.image.sprite = recipe.outputItem.icon;
+        resultName.text = recipe.Name;
+        if (recipe.Icon != null)
+            craftButton.image.sprite = recipe.Icon;
 
         StringBuilder sb = new StringBuilder();
         foreach (var ing in recipe.ingredients)

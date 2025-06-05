@@ -3,10 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewTool", menuName = "Items/Tool", order = 3)]
 public class ItemTool : ItemWithStats
 {
-    public float effectiveness = 1f; // How much "damage" or effectiveness this tool has per hit
+    public float effectiveness = 1f;
 
-    // Add tool-specific properties (like ToolType, effectiveness)
-    [Header("Tool Specifics")] public ToolType toolType; // The enum you defined earlier (Axe, Pickaxe, etc.)
+    [Header("Tool Specifics")] public ToolType toolType;
 
     private void OnValidate()
     {

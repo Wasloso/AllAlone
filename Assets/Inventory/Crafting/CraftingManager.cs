@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CraftingManager: MonoBehaviour
 {
     public GameObject player;
-    public List<Reciepie> reciepes;
+    public List<Recipe> reciepes;
     private PlayerInventory playerInventory;
 
 
@@ -17,7 +17,7 @@ public class CraftingManager: MonoBehaviour
             Debug.LogError("PlayerInventory component not found on player object.");
         }
     }
-    public bool CanCraft(Reciepie recipe)
+    public bool CanCraft(Recipe recipe)
     {
         foreach (var ingredient in recipe.ingredients)
         {
@@ -28,7 +28,7 @@ public class CraftingManager: MonoBehaviour
         return true;
     }
 
-    public bool Craft(Reciepie recipe)
+    public bool Craft(Recipe recipe)
     {
         if (!CanCraft(recipe)) return false;
 
@@ -37,7 +37,18 @@ public class CraftingManager: MonoBehaviour
             playerInventory.RemoveItem(ingredient.item, ingredient.quantity);
         }
 
-        playerInventory.AddItem(recipe.outputItem, recipe.outputQuantity);
-        return true;
+        if (recipe is ItemRecipe itemRecipie)
+        {
+            playerInventory.AddItem(itemRecipie.resultItem, itemRecipie.resultAmount);
+            return true;
+        }
+        else if (recipe is StructureRecipe placeableRecipie)
+        {
+            Debug.Log("Crafting structure");
+            player.GetComponent<PlayerBuilding>().EnterBuildingMode(placeableRecipie.structurePrefab);
+            return true;
+        }
+
+        return false;
     }
 }

@@ -9,7 +9,7 @@ public class CraftingUI : MonoBehaviour
     public RectTransform contentParent;
     public GameObject recipeItemPrefab;
 
-    private List<Reciepie> allRecipes;
+    private List<Recipe> allRecipes;
     public CraftingManager craftingManager;
 
     private bool isOpen = false;
@@ -33,12 +33,13 @@ public class CraftingUI : MonoBehaviour
 
     void PopulateRecipes()
     {
-
+        //contentParent.sizeDelta = new Vector2(contentParent.sizeDelta.x, allRecipes.Count * 160);
         foreach (Transform child in contentParent)
             Destroy(child.gameObject);
 
         foreach (var recipe in allRecipes)
         {
+            
             var obj = Instantiate(recipeItemPrefab,contentParent);
             Debug.Log("Instantiated recipe item prefab: " + obj.name + " at " + obj.transform.parent.name);
             var rectTransform = obj.GetComponent<RectTransform>();

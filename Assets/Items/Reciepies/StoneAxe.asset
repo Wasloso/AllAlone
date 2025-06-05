@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d965ad0006bd6a74288c910b24819f45, type: 3}
-  m_Name: StoneSword
+  m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
+  m_Name: StoneAxe
   m_EditorClassIdentifier: 
   ingredients: []
-  outputItem: {fileID: 11400000, guid: e9e327d8a07f5cf489cbe7b12e51c699, type: 2}
-  outputQuantity: 1
+  resultItem: {fileID: 11400000, guid: f4fb230f756736847879e26c927da279, type: 2}
+  resultAmount: 1

@@ -26,6 +26,7 @@ public class Item : ScriptableObject
     {
         if (string.IsNullOrEmpty(id)) id = title + Guid.NewGuid();
     }
+
 }
 
 public enum ItemType
@@ -36,7 +37,8 @@ public enum ItemType
     Tool,
     Consumable,
     Resource,
-    Artifact
+    Artifact,
+    LightSource
 }
 
 public enum SlotTag

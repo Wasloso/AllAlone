@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d965ad0006bd6a74288c910b24819f45, type: 3}
+  m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
   m_Name: WoodenPickaxe
   m_EditorClassIdentifier: 
-  outputItem: {fileID: 11400000, guid: d8f0b0ddb74ac7e45a3fc7288d688c16, type: 2}
-  ingredients:
-  - item: {fileID: 11400000, guid: 83eb8a14590b10f44a57e85707f90370, type: 2}
-    quantity: 2
-  - item: {fileID: 11400000, guid: 7c75559603219b640beeeff57bc58dd6, type: 2}
-    quantity: 3
+  ingredients: []
+  resultItem: {fileID: 11400000, guid: d8f0b0ddb74ac7e45a3fc7288d688c16, type: 2}
+  resultAmount: 1

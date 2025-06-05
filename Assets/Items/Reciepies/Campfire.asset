@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
-  m_Name: Rope
+  m_Script: {fileID: 11500000, guid: 21382cd3db28fa943817e4c0b4d45cfb, type: 3}
+  m_Name: Campfire
   m_EditorClassIdentifier: 
   ingredients: []
-  resultItem: {fileID: 11400000, guid: dc0cec42a17d0034db0e2ec13e1ff972, type: 2}
-  resultAmount: 1
+  structurePrefab: {fileID: 4147721429592498122, guid: 3122e5973a8d14e4996cab4999e75936, type: 3}

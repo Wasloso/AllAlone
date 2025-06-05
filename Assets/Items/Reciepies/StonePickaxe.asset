@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
-  m_Name: Rope
+  m_Name: StonePickaxe
   m_EditorClassIdentifier: 
   ingredients: []
-  resultItem: {fileID: 11400000, guid: dc0cec42a17d0034db0e2ec13e1ff972, type: 2}
+  resultItem: {fileID: 11400000, guid: 4944af0ccf8136f40b140adb1892834f, type: 2}
   resultAmount: 1

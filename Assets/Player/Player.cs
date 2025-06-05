@@ -46,7 +46,6 @@ namespace Player // Keep your namespaces consistent!
             var attack = new AttackState(this, animator);
             var interact = new InteractState(this, animator);
 
-
             _stateMachine.AddTransition(walk, idle, () => _playerMovement.MovementInput.magnitude < 0.1f);
 
 

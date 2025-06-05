@@ -17,6 +17,7 @@ namespace Player
         private void OnEnable()
         {
             InputActions.Player.Enable();
+            InputActions.Building.Enable();
             InputActions.UI.Enable();
 
             InputActions.UI.Pause.performed += OnPause;
@@ -25,6 +26,8 @@ namespace Player
         private void OnDisable()
         {
             InputActions.Player.Disable();
+            InputActions.Building.Disable();
+
             InputActions.UI.Disable();
 
             InputActions.UI.Pause.performed -= OnPause;
@@ -33,6 +36,7 @@ namespace Player
         private void OnDestroy()
         {
             InputActions.Dispose();
+
         }
 
         public event Action OnPausePressed;
