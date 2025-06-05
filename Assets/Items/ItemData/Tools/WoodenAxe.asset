@@ -15,7 +15,7 @@ MonoBehaviour:
   id: wooden_axe
   title: Wooden axe
   description: A generic item.
-  icon: {fileID: 21300000, guid: 086899a501b20924c98c8dacd5f04800, type: 3}
+  icon: {fileID: 8388286960808667120, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1
   itemType: 3
   slotTag: 3

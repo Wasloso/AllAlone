@@ -15,10 +15,10 @@ MonoBehaviour:
   id: stone_axe
   title: Stone Axe
   description: Stone Axe
-  icon: {fileID: 8168027293871005872, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
+  icon: {fileID: 3959689461064203550, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1
-  statModifiers: []
   itemType: 3
   slotTag: 3
+  statModifiers: []
   effectiveness: 2
   toolType: 0

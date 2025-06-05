@@ -1959,7 +1959,7 @@ PrefabInstance:
       objectReference: {fileID: 291457166}
     - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: reciepes.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: 'reciepes.Array.data[0]'
@@ -1970,13 +1970,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 41f27d015f5713142a564eff0a89c4df, type: 2}
     - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfc149968798a243a5a8a2858b2aa9e, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 313bfb0765619214189f5f25c0cd1f9a, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: 'reciepes.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: e4ccd6c606bc0f345a0a70b456c29822, type: 2}
+      objectReference: {fileID: 11400000, guid: c1ad2569d63955b428583159dc687fe0, type: 2}
     - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: 'reciepes.Array.data[5]'
       value: 
-      objectReference: {fileID: 11400000, guid: e4ccd6c606bc0f345a0a70b456c29822, type: 2}
+      objectReference: {fileID: 11400000, guid: 2db0e9a38f5b84a418ab96c890150c02, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 769e59ac13a89544094a63ce51633cf3, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f51aa05d822ddbb46a169ca41437b6d6, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f51aa05d822ddbb46a169ca41437b6d6, type: 2}
     - target: {fileID: 8678552739863504044, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
