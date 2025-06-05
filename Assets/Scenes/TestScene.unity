@@ -198,6 +198,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 291457175}
   heldLight: {fileID: 493646914}
+--- !u!114 &291457192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291457166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d99d3030d6fff48a9686537a84351d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1292,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6406876045094531828, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 291457182}
+    - targetCorrespondingSourceObject: {fileID: 6406876045094531828, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 291457192}
   m_SourcePrefab: {fileID: 100100000, guid: 15ec991e0cdee1746b0ab4dfa6bac4e3, type: 3}
 --- !u!114 &1993908035 stripped
 MonoBehaviour:
@@ -1944,8 +1959,20 @@ PrefabInstance:
       objectReference: {fileID: 291457166}
     - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: reciepes.Array.size
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 52c14580b413f7945b7298aa25867d81, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 41f27d015f5713142a564eff0a89c4df, type: 2}
+    - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
+      propertyPath: 'reciepes.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e4ccd6c606bc0f345a0a70b456c29822, type: 2}
     - target: {fileID: 8352118064947465913, guid: f1fee1f4a36ef42449bd8d5f340f8b05, type: 3}
       propertyPath: 'reciepes.Array.data[5]'
       value: 

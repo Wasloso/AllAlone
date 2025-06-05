@@ -9,7 +9,7 @@ public class CraftingUI : MonoBehaviour
     public RectTransform contentParent;
     public GameObject recipeItemPrefab;
 
-    private List<Reciepie> allRecipes;
+    private List<Recipe> allRecipes;
     public CraftingManager craftingManager;
 
     private bool isOpen = false;

@@ -16,16 +16,19 @@ namespace Player
         private void OnEnable()
         {
             InputActions.Player.Enable();
+            InputActions.Building.Enable();
         }
 
         private void OnDisable()
         {
             InputActions.Player.Disable();
+            InputActions.Building.Disable();
         }
 
         private void OnDestroy()
         {
             InputActions.Dispose();
+
         }
     }
 }

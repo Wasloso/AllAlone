@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1278636705833044321
+--- !u!1001 &5683508751078193891
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,29 +8,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 200717004395232709, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 904482027259607400, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
       propertyPath: m_Name
-      value: HarvestableResource
-      objectReference: {fileID: 0}
-    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202240457738750026, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614546074271086095, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 0
+      value: PlaceableBuilding
       objectReference: {fileID: 0}
     - target: {fileID: 9161760614573332405, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,27 +58,22 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 904482027259607400, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -70933083599176678}
+      addedObject: {fileID: 209731536722691890}
   m_SourcePrefab: {fileID: 100100000, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
---- !u!1 &2104303436823326729 stripped
+--- !u!1 &4779089430476374923 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 904482027259607400, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
-  m_PrefabInstance: {fileID: 1278636705833044321}
+  m_PrefabInstance: {fileID: 5683508751078193891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-70933083599176678
+--- !u!114 &209731536722691890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104303436823326729}
+  m_GameObject: {fileID: 4779089430476374923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11508cf8f7cc498aaa3fcc9d703a5e14, type: 3}
+  m_Script: {fileID: 11500000, guid: 998d6f479bf2756489b08ededc2eb4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionAnimationType: 2
-  droppedItemPrefab: {fileID: 2419407849854492215, guid: c2358ddaaab8590408a59d12df3b81c0, type: 3}
-  requiredToolType: 4
-  currentHealth: 10
-  itemDrops: []

@@ -26,6 +26,7 @@ public class Item : ScriptableObject
     {
         if (string.IsNullOrEmpty(id)) id = title + Guid.NewGuid();
     }
+
 }
 
 public enum ItemType
