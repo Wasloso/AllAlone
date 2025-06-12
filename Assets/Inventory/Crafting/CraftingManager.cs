@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CraftingManager: MonoBehaviour
+public class CraftingManager : MonoBehaviour
 {
     public GameObject player;
     public List<Recipe> reciepes;
@@ -12,19 +11,19 @@ public class CraftingManager: MonoBehaviour
     public void Start()
     {
         playerInventory = player.GetComponent<PlayerInventory>();
-        if (playerInventory == null)
-        {
-            Debug.LogError("PlayerInventory component not found on player object.");
-        }
+        if (playerInventory == null) Debug.LogError("PlayerInventory component not found on player object.");
+        reciepes = new List<Recipe>(Resources.LoadAll<Recipe>("Recipes"));
     }
+
     public bool CanCraft(Recipe recipe)
     {
         foreach (var ingredient in recipe.ingredients)
         {
-            int owned = playerInventory.CountItem(ingredient.item);
+            var owned = playerInventory.CountItem(ingredient.item);
             if (owned < ingredient.quantity)
                 return false;
         }
+
         return true;
     }
 
@@ -32,17 +31,15 @@ public class CraftingManager: MonoBehaviour
     {
         if (!CanCraft(recipe)) return false;
 
-        foreach (var ingredient in recipe.ingredients)
-        {
-            playerInventory.RemoveItem(ingredient.item, ingredient.quantity);
-        }
+        foreach (var ingredient in recipe.ingredients) playerInventory.RemoveItem(ingredient.item, ingredient.quantity);
 
         if (recipe is ItemRecipe itemRecipie)
         {
             playerInventory.AddItem(itemRecipie.resultItem, itemRecipie.resultAmount);
             return true;
         }
-        else if (recipe is StructureRecipe placeableRecipie)
+
+        if (recipe is StructureRecipe placeableRecipie)
         {
             Debug.Log("Crafting structure");
             player.GetComponent<PlayerBuilding>().EnterBuildingMode(placeableRecipie.structurePrefab);
