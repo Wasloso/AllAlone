@@ -182,6 +182,24 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""248b6cdf-69e0-4d7a-a3cf-70f0a1bf7b55"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""1434e516-10d7-4a53-9aa3-ae945f9cbad3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -589,6 +607,28 @@ namespace Player
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d4c0a44-9946-45a3-85c6-eb3045ce5cf0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67cae49c-d440-40cc-8a52-2fdec3904866"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1254,6 +1294,8 @@ namespace Player
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
+            m_Player_RotateLeft = m_Player.FindAction("RotateLeft", throwIfNotFound: true);
+            m_Player_RotateRight = m_Player.FindAction("RotateRight", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1363,6 +1405,8 @@ namespace Player
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_Click;
+        private readonly InputAction m_Player_RotateLeft;
+        private readonly InputAction m_Player_RotateRight;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1414,6 +1458,14 @@ namespace Player
             /// Provides access to the underlying input action "Player/Click".
             /// </summary>
             public InputAction @Click => m_Wrapper.m_Player_Click;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/RotateLeft".
+            /// </summary>
+            public InputAction @RotateLeft => m_Wrapper.m_Player_RotateLeft;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/RotateRight".
+            /// </summary>
+            public InputAction @RotateRight => m_Wrapper.m_Player_RotateRight;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1470,6 +1522,12 @@ namespace Player
                 @Click.started += instance.OnClick;
                 @Click.performed += instance.OnClick;
                 @Click.canceled += instance.OnClick;
+                @RotateLeft.started += instance.OnRotateLeft;
+                @RotateLeft.performed += instance.OnRotateLeft;
+                @RotateLeft.canceled += instance.OnRotateLeft;
+                @RotateRight.started += instance.OnRotateRight;
+                @RotateRight.performed += instance.OnRotateRight;
+                @RotateRight.canceled += instance.OnRotateRight;
             }
 
             /// <summary>
@@ -1511,6 +1569,12 @@ namespace Player
                 @Click.started -= instance.OnClick;
                 @Click.performed -= instance.OnClick;
                 @Click.canceled -= instance.OnClick;
+                @RotateLeft.started -= instance.OnRotateLeft;
+                @RotateLeft.performed -= instance.OnRotateLeft;
+                @RotateLeft.canceled -= instance.OnRotateLeft;
+                @RotateRight.started -= instance.OnRotateRight;
+                @RotateRight.performed -= instance.OnRotateRight;
+                @RotateRight.canceled -= instance.OnRotateRight;
             }
 
             /// <summary>
@@ -1999,6 +2063,20 @@ namespace Player
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnClick(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "RotateLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRotateLeft(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "RotateRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRotateRight(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

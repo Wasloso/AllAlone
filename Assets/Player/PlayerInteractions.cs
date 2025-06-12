@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractions : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerInteractions : MonoBehaviour
     private InputAction _clickAction;
     private PlayerInputHandler _inputHandler;
     private InputAction _interactAction;
+    private bool _isPointerOverUI;
     private PlayerInventory _playerInventory;
 
     private PlayerMovement _playerMovement;
@@ -34,6 +36,7 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Update()
     {
+        _isPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }
 
     private void TryInteract()
@@ -78,6 +81,6 @@ public class PlayerInteractions : MonoBehaviour
 
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        TryInteract();
+        if (!_isPointerOverUI) TryInteract();
     }
 }
