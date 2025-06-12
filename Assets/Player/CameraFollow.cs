@@ -1,4 +1,6 @@
+using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -16,10 +18,26 @@ public class CameraFollow : MonoBehaviour
     [Header("Rotation Smoothing")] public float smoothRotationSpeed = 5f;
 
     private float _currentRotationAngle;
+
+    private PlayerInputHandler _inputHandler;
     private float _targetRotationAngle;
+    private InputAction onRotateLeftAction;
+    private InputAction onRotateRightAction;
+
+    private void Awake()
+    {
+        _inputHandler = GetComponent<PlayerInputHandler>();
+    }
+
 
     private void Start()
     {
+        onRotateLeftAction = _inputHandler.InputActions.Player.RotateLeft;
+        onRotateRightAction = _inputHandler.InputActions.Player.RotateRight;
+        onRotateLeftAction.Enable();
+        onRotateRightAction.Enable();
+        onRotateRightAction.performed += ctx => RotateCamera(-90);
+        onRotateLeftAction.performed += ctx => RotateCamera(90);
         if (cam == null)
         {
             cam = Camera.main;
@@ -41,13 +59,6 @@ public class CameraFollow : MonoBehaviour
         cam.transform.LookAt(transform.position + Vector3.up * lookAtHeightOffset);
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E)) RotateCamera(90);
-
-        if (Input.GetKeyDown(KeyCode.Q)) RotateCamera(-90);
-    }
 
     private void LateUpdate()
     {

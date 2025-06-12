@@ -9,6 +9,7 @@ namespace Player
         public PlayerInputActions InputActions { get; private set; }
         public InputAction PlayerMovementAction => InputActions.Player.Move;
 
+
         private void Awake()
         {
             InputActions = new PlayerInputActions();
@@ -36,7 +37,6 @@ namespace Player
         private void OnDestroy()
         {
             InputActions.Dispose();
-
         }
 
         public event Action OnPausePressed;
