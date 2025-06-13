@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class FileDataHandler
 {
-
-
     private string dataDirPath = "";
-    private string dataFileName = "";
 
 
-    public FileDataHandler(string dataDirPath, string dataFileName)
+    public FileDataHandler(string dataDirPath)
     {
         this.dataDirPath = dataDirPath;
-        this.dataFileName = dataFileName;
     }
 
-    public GameData Load()
+    public GameData Load(string dataFileName)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
@@ -46,7 +42,7 @@ public class FileDataHandler
         return loadedData;
     }
 
-    public void Save(GameData data)
+    public void Save(GameData data, string dataFileName)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
