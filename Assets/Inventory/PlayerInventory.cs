@@ -53,7 +53,7 @@ public class PlayerInventory : MonoBehaviour
             var itemInSlot = slot.inventoryItem;
             if (itemInSlot == null)
             {
-                SpawnNewItem(item, slot);
+                SpawnNewItem(item, slot,quantity);
                 return true;
             }
         }
@@ -134,12 +134,12 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-    private void SpawnNewItem(Item item, InventorySlot slot)
+    private void SpawnNewItem(Item item, InventorySlot slot, int quantity = 1)
     {
         var newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         var inventoryItem = newItemGo.GetComponent<InventoryItem>();
         slot.inventoryItem = inventoryItem;
-        inventoryItem.InitializeItem(item);
+        inventoryItem.InitializeItem(item,quantity);
     }
 
     private void HandleHandSlotItemChanged()

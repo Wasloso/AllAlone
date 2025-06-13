@@ -1,5 +1,7 @@
 using Player;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -55,6 +57,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        TogglePause();
+        DataPersistenceManager.Instance.SaveGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); ;
     }
 }

@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
-  m_Name: WoodenHelmet
+  m_Name: Grass
   m_EditorClassIdentifier: 
-  id: Wooden helmet
-  title: Wooden helmet
-  description: wooden helmet
-  icon: {fileID: -5731879751055622204, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
-  maxStackSize: 1
-  statModifiers: []
-  itemType: 2
-  slotTag: 1
+  id: grass
+  title: Grass
+  description: Grass
+  icon: {fileID: 4354133572485782140, guid: 5d024871fbc1e724596c64e73a5514ae, type: 3}
+  maxStackSize: 40
+  itemType: 5
+  slotTag: 0

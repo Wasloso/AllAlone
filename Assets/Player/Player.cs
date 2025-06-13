@@ -1,13 +1,16 @@
 // Player.cs (or PlayerController.cs, PlayerManager.cs)
 
-using System;
 using Items;
 using Player.States;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player // Keep your namespaces consistent!
 {
-    public class Player : MonoBehaviour, IDamageable, IConsumableReciever
+    public class Player : MonoBehaviour, IDamageable, IConsumableReciever, IDataPersistence
     {
         [Header("Player Systems")] public PlayerMovement _playerMovement;
 
@@ -187,5 +190,42 @@ namespace Player // Keep your namespaces consistent!
                 stat?.RemoveAllModifiersFromSource(item); // assumes mod.Source == item
             }
         }
+
+        public void LoadData(GameData data)
+        {
+            _healthSystem.Health.SetCurrent(data.playerData.health);
+            _hungerSystem.Hunger.SetCurrent(data.playerData.hunger);
+            var items = Resources.LoadAll<Item>("Items");
+
+            foreach (var item in data.playerData.items)
+            {
+                Item itemToLoad = items.FirstOrDefault(i => i.id == item.id);
+                if (itemToLoad != null)
+                {
+                    Debug.Log("Item: " + item.count);
+                    _playerInventory.AddItem(itemToLoad, item.count);
+                }
+            }
+        }
+
+        public void SaveData(ref GameData data)
+        {
+            data.playerData = toPlayerData();
+        }
+
+        public PlayerData toPlayerData()
+        {
+            var items = new List<ItemData>();
+            foreach (var slot in _playerInventory.inventorySlots)
+            {
+                if (slot?._inventoryItem?.item != null)
+                {
+                    items.Add(new ItemData(slot._inventoryItem.item.id, slot._inventoryItem.count));
+                }
+            }
+            return new PlayerData(_healthSystem.CurrentHealth, _hungerSystem.CurrentHunger, items);
+        }
     }
 }
+
+

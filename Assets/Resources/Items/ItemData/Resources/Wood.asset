@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
-  m_Name: Gold
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  id: 9e04da6c-f246-4b5f-9a6f-87f77bed4dd2
-  title: Gold
-  description: 'Gold '
-  icon: {fileID: -4286855420313662491, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
-  maxStackSize: 20
+  id: wood
+  title: Wood
+  description: A generic item.
+  icon: {fileID: 3225740610282390120, guid: 5d024871fbc1e724596c64e73a5514ae, type: 3}
+  maxStackSize: 16
   itemType: 5
   slotTag: 0
