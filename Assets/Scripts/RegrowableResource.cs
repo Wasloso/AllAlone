@@ -10,10 +10,17 @@ namespace DefaultNamespace
     public class RegrowableResource : WorldObject
     {
 
-
+        [SerializeField] private float regrowTime = 30f;
+        [SerializeField] private Sprite growingSprite;
+        [SerializeField] private Sprite grownSprite;
+        private SpriteRenderer SpriteRenderer;
         private bool isReady = true;
-        [SerializeField]private float regrowTime = 30f;
 
+        public void Start()
+        {
+            SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            SpriteRenderer.sprite = grownSprite;
+        }
 
         public override bool CanInteract(GameObject interactor, Item itemUsed = null)
         {
@@ -38,6 +45,7 @@ namespace DefaultNamespace
                 DropItem(dropEntry.item, transform.position, quantity);
             }
             isReady = false;
+            SpriteRenderer.sprite = growingSprite;
             StartCoroutine(RegrowCoroutine());
         }
 
@@ -45,6 +53,7 @@ namespace DefaultNamespace
         {
             yield return new WaitForSeconds(regrowTime);
             isReady = true;
+            SpriteRenderer.sprite = grownSprite;
         }
 
 

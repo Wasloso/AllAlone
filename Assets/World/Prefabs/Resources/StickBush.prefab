@@ -69,6 +69,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3080606894237359768, guid: 661b419d467441b4d86e8a5213bfbcf4, type: 3}
+      propertyPath: grownSprite
+      value: 
+      objectReference: {fileID: 1755138415, guid: c1b61e7ad0e6eab43aa5dab6f2c59cee, type: 3}
+    - target: {fileID: 3080606894237359768, guid: 661b419d467441b4d86e8a5213bfbcf4, type: 3}
+      propertyPath: growingSprite
+      value: 
+      objectReference: {fileID: 6120521244298858060, guid: 744d2fbaa08830d49a5bfaf4e66f4585, type: 3}
+    - target: {fileID: 3080606894237359768, guid: 661b419d467441b4d86e8a5213bfbcf4, type: 3}
       propertyPath: itemDrops.Array.size
       value: 1
       objectReference: {fileID: 0}
