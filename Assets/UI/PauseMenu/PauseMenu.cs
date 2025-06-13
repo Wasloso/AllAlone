@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class PauseMenu : MonoBehaviour
             Debug.LogError("No input handler found");
             enabled = false;
         }
+    }
+
+    private void Start()
+    {
     }
 
     private void OnEnable()
@@ -55,6 +60,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Menu");
     }
 }
