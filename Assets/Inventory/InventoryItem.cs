@@ -86,6 +86,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             for (var i = 0; i < count; i++)
             {
                 worldPos.x += 0.1f * i;
+                worldPos.y = 0;
                 worldPos.z += 0.1f * i;
                 var drop = Instantiate(droppedItemPrefab, worldPos, Quaternion.identity);
                 var dropped = drop.GetComponent<DroppedItem>();
@@ -115,6 +116,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         item = newItem;
         image.sprite = newItem.icon;
         count = quantity;
+        Debug.Log(count);
 
         RefreshCount();
     }

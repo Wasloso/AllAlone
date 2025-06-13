@@ -8,7 +8,7 @@ using UnityEngine.InputSystem.UI;
 public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     public SlotTag slotTag = SlotTag.None;
-    private InventoryItem _inventoryItem;
+    public InventoryItem _inventoryItem { get; private set; }
     public bool IsEmpty => inventoryItem == null || inventoryItem.count == 0;
 
     public InventoryItem inventoryItem
