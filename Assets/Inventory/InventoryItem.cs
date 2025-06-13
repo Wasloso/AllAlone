@@ -15,7 +15,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void Start()
     {
-        InitializeItem(item);
+        //InitializeItem(item,count);
     }
 
     // Update is called once per frame
