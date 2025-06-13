@@ -931,6 +931,10 @@ PrefabInstance:
       propertyPath: m_ControlPath
       value: <Joystick>/stick
       objectReference: {fileID: 0}
+    - target: {fileID: 7760327035377543409, guid: 1f1b76708230fa9488fdcdd37fce3112, type: 3}
+      propertyPath: inputHandler
+      value: 
+      objectReference: {fileID: 1903471962}
     - target: {fileID: 7876036436850492796, guid: 1f1b76708230fa9488fdcdd37fce3112, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1142,6 +1146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watcher
       objectReference: {fileID: 0}
+    - target: {fileID: 8890096739554255958, guid: ca3bcd2aecf69f64198a3bab91f40d8b, type: 3}
+      propertyPath: droppedItemPrefab
+      value: 
+      objectReference: {fileID: 2419407849854492215, guid: c2358ddaaab8590408a59d12df3b81c0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2162,6 +2170,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8075066614740722004, guid: 9997d18803cf2bd4da671a61274f1c9f, type: 3}
   m_PrefabInstance: {fileID: 2024121455}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1903471962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6790758867976337309, guid: 9997d18803cf2bd4da671a61274f1c9f, type: 3}
+  m_PrefabInstance: {fileID: 2024121455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903471952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e96a15df7ebf348a486f1801efe04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1961860456 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2091826761104759286, guid: 1f1b76708230fa9488fdcdd37fce3112, type: 3}

@@ -40,7 +40,19 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Mouse.current.position.ReadValue();
+        Vector3 mousePosition;
+#if UNITY_IOS || UNITY_ANDROID
+    if (Touchscreen.current == null || !Touchscreen.current.primaryTouch.press.isPressed)
+        return;
+
+    mousePosition = Touchscreen.current.primaryTouch.position.ReadValue();
+#else
+        if (Mouse.current == null || !Mouse.current.leftButton.isPressed)
+            return;
+
+        mousePosition = Mouse.current.position.ReadValue();
+#endif
+        transform.position = mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
