@@ -42,7 +42,7 @@ public class PlayerInteractions : MonoBehaviour
     private void TryInteract()
     {
         Target = null;
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         Debug.DrawRay(ray.origin, ray.direction * float.MaxValue, Color.red, 1f);
 
         if (!Physics.Raycast(ray, out var hitInfo, float.MaxValue, interactableLayer))
