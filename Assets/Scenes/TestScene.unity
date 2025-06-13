@@ -790,6 +790,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 6406876043790630724}
+    - target: {fileID: 830428115121168574, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
+      propertyPath: reciepes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1179582393440214208, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
       propertyPath: _timeOfDaySystem
       value: 
@@ -1044,6 +1048,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062902313922076050, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185451056990289916, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185451056990289916, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185451056990289916, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5262576530015537590, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
