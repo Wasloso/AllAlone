@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 15003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: New Windows Profile
+  m_Name: New iOS Profile
   m_EditorClassIdentifier: 
   m_AssetVersion: 1
-  m_BuildTarget: 19
-  m_Subtarget: 2
-  m_PlatformId: 4e3c793746204150860bf175a9a41a05
+  m_BuildTarget: 9
+  m_Subtarget: 0
+  m_PlatformId: ad48d16a66894befa4d8181998c3cb09
   m_PlatformBuildProfile:
-    rid: 1953237628703997952
+    rid: 6740080251918876674
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
     m_path: Assets/Scenes/Menu.unity
   - m_enabled: 1
-    m_path: Assets/Scenes/Game.unity
+    m_path: Assets/Scenes/GameMobile.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
@@ -110,7 +110,7 @@ MonoBehaviour:
     - line: '|   defaultIsNativeResolution: 1'
     - line: '|   macRetinaSupport: 1'
     - line: '|   runInBackground: 0'
-    - line: '|   muteOtherAudioSources: 0'
+    - line: '|   muteOtherAudioSources: 1'
     - line: '|   Prepare IOS For Recording: 0'
     - line: '|   Force IOS Speakers When Recording: 0'
     - line: '|   deferSystemGesturesMode: 0'
@@ -580,6 +580,9 @@ MonoBehaviour:
     - line: '|   - serializedVersion: 3'
     - line: '|     m_BuildTarget: Android'
     - line: '|     m_Formats: 03000000'
+    - line: '|   - serializedVersion: 3'
+    - line: '|     m_BuildTarget: iOS'
+    - line: '|     m_Formats: 03000000'
     - line: '|   playModeTestRunnerEnabled: 0'
     - line: '|   runPlayModeTestAsEditModeTest: 0'
     - line: '|   actionOnDotNetUnhandledException: 1'
@@ -963,12 +966,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 1953237628703997952
-      type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
+    - rid: 6740080251918876674
+      type: {class: iOSPlatformSettings, ns: UnityEditor.iOS, asm: UnityEditor.iOS.Extensions}
       data:
-        m_Development: 0
+        m_Development: 1
         m_ConnectProfiler: 0
         m_BuildWithDeepProfilingSupport: 0
         m_AllowDebugging: 0
@@ -979,9 +980,7 @@ MonoBehaviour:
         m_ExplicitArrayBoundsChecks: 0
         m_CompressionType: 0
         m_InstallInBuildFolder: 0
-        m_WindowsBuildAndRunDeployTarget: 0
-        m_Architecture: 0
-        m_CreateSolution: 0
-        m_CopyPDBFiles: 0
-        m_WindowsDevicePortalAddress: 
-        m_WindowsDevicePortalUsername: 
+        m_iOSXcodeBuildConfig: 1
+        m_SymlinkSources: 0
+        m_PreferredXcode: 
+        m_SymlinkTrampoline: 0
