@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ccafba4aa36458ba7ec94579d64d751, type: 3}
   m_Name: GoldenSword
   m_EditorClassIdentifier: 
-  id: 
-  title: New Weapon
+  id: golden_sword
+  title: Golden Sword
   description: A generic item.
   icon: {fileID: 0}
   maxStackSize: 1

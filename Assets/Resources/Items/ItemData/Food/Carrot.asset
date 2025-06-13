@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6b261b82834b71a9ebe81a3f6abd56, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  id: Carrot
+  id: carrot
   title: Carrot
   description: Tasty Tasty Yum Yum
   icon: {fileID: 1211017311584890413, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}

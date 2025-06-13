@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
   m_Name: Grass
   m_EditorClassIdentifier: 
-  id: f4a1054a-b483-4544-a5b3-33d77ec2b4e7
+  id: grass
   title: Grass
   description: Grass
   icon: {fileID: 4354133572485782140, guid: 5d024871fbc1e724596c64e73a5514ae, type: 3}
   maxStackSize: 40
-  statModifiers: []
   itemType: 5
   slotTag: 0

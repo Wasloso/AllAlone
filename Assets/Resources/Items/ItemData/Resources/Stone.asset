@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  id: New Item
-  title: New Item
+  id: stone
+  title: Stone
   description: A generic item.
   icon: {fileID: -6526467997194272869, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 16
-  statModifiers: []
   itemType: 5
   slotTag: 0

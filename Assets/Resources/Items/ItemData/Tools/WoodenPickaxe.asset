@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928af44d7c3e46d44be54c2f95ecc4c4, type: 3}
   m_Name: WoodenPickaxe
   m_EditorClassIdentifier: 
-  id: d08b7da2-5cf2-466b-8132-27a5a6b468d0
-  title: Stone Pickaxe
+  id: wooden_pickaxe
+  title: Wooden Pickaxe
   description: Stone Pickaxe
   icon: {fileID: 8168027293871005872, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1

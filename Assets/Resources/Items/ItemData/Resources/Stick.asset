@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00bbd5f14c5ea042ae484644bbbcddc, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
-  id: New Item
-  title: New Item
+  id: stick
+  title: Stick
   description: A generic item.
   icon: {fileID: 6120521244298858060, guid: 744d2fbaa08830d49a5bfaf4e66f4585, type: 3}
   maxStackSize: 16
-  statModifiers: []
   itemType: 5
   slotTag: 0
