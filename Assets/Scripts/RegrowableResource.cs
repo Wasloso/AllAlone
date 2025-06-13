@@ -1,68 +1,59 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
-    public class HarvestableResource : WorldObject
+    public class RegrowableResource : WorldObject
     {
-        public ToolType requiredToolType = ToolType.None;
+
+        [SerializeField] private float regrowTime = 30f;
+        [SerializeField] private Sprite growingSprite;
+        [SerializeField] private Sprite grownSprite;
+        private SpriteRenderer SpriteRenderer;
+        private bool isReady = true;
+
+        public void Start()
+        {
+            SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            SpriteRenderer.sprite = grownSprite;
+        }
+
         public override bool CanInteract(GameObject interactor, Item itemUsed = null)
         {
-            if (requiredToolType == ToolType.None) return true;
-            if (itemUsed is ItemTool tool && tool.toolType == requiredToolType) return true;
-            return false;
+            return isReady;
         }
 
         public override void Interact(GameObject interactor, Item itemUsed = null)
         {
-            if (requiredToolType == ToolType.None)
-            {
-                Harvest();
-                return;
-            }
-
-            if (!itemUsed)
-            {
-                Debug.Log($"Cannot harvest {gameObject.name}. Requires a {requiredToolType}, but nothing is equipped.");
-                return;
-            }
-
-            if (itemUsed is ItemTool tool && tool.toolType == requiredToolType)
-                TakeDamage(tool.effectiveness);
-            else
-                Debug.Log(
-                    $"Cannot harvest {gameObject.name}. Requires a {requiredToolType}, but used {itemUsed.title} (Type: {itemUsed.itemType}).");
+            Harvest();
         }
 
         public event Action OnHarvest;
-
-        public virtual void TakeDamage(float damageAmount)
-        {
-            currentHealth -= damageAmount;
-            currentHealth = Mathf.Max(currentHealth, 0f);
-
-            Debug.Log($"{gameObject.name} took {damageAmount} damage. Remaining health: {currentHealth}");
-
-            if (currentHealth <= 0) Harvest();
-            // Optional: Play hit animation, sound, or particle effect
-        }
 
         protected virtual void Harvest()
         {
             Debug.Log($"{gameObject.name} harvested!");
             OnHarvest?.Invoke();
 
-            // TODO: Item drops
             foreach (var dropEntry in itemDrops)
             {
                 var quantity = Random.Range(dropEntry.minQuantity, dropEntry.maxQuantity);
                 DropItem(dropEntry.item, transform.position, quantity);
             }
+            isReady = false;
+            SpriteRenderer.sprite = growingSprite;
+            StartCoroutine(RegrowCoroutine());
+        }
 
-            Destroy(gameObject);
+        private IEnumerator RegrowCoroutine()
+        {
+            yield return new WaitForSeconds(regrowTime);
+            isReady = true;
+            SpriteRenderer.sprite = grownSprite;
         }
 
 

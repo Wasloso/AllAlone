@@ -551,6 +551,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: a74414ca831f501419512e8bef1a4d8c, type: 2}
   worldContainer: {fileID: 1095376966}
+--- !u!4 &1000591072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3421465772761057428, guid: 0b53d8316f8917e4a91ddded8f69d9c1, type: 3}
+  m_PrefabInstance: {fileID: 2346726541325860152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1095376964
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +599,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55477b64d37981d4a8c9a1b21d1edb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1399644484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399644485}
+  - component: {fileID: 1399644486}
+  m_Layer: 0
+  m_Name: DataPersistenceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399644485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399644484}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1000591072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399644486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399644484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de93a1b323d81d540b4ab56f40800d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: BetaGame
 --- !u!1001 &1710140754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1256,7 +1306,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3421465772761057428, guid: 0b53d8316f8917e4a91ddded8f69d9c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1399644485}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b53d8316f8917e4a91ddded8f69d9c1, type: 3}
 --- !u!114 &4528468471262987191 stripped
