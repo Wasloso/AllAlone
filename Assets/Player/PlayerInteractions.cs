@@ -42,15 +42,31 @@ public class PlayerInteractions : MonoBehaviour
     private void TryInteract()
     {
         Target = null;
-        var ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Debug.DrawRay(ray.origin, ray.direction * float.MaxValue, Color.red, 1f);
+
+        Vector2 screenPosition;
+
+#if UNITY_IOS || UNITY_ANDROID
+    if (Touchscreen.current == null || !Touchscreen.current.primaryTouch.press.isPressed)
+        return;
+
+    screenPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+#else
+        if (Mouse.current == null || !Mouse.current.leftButton.isPressed)
+            return;
+
+        screenPosition = Mouse.current.position.ReadValue();
+#endif
+
+        var ray = Camera.main.ScreenPointToRay(screenPosition);
+        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 1f);
 
         if (!Physics.Raycast(ray, out var hitInfo, float.MaxValue, interactableLayer))
             return;
 
         var distance = Vector3.Distance(transform.position, hitInfo.point);
 
-        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable)) Target = hitInfo.collider.gameObject;
+        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable))
+            Target = hitInfo.collider.gameObject;
     }
 
     private void OnKeyboardInteract(InputAction.CallbackContext context)
