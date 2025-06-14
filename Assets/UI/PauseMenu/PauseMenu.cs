@@ -20,6 +20,10 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+    }
+
     private void OnEnable()
     {
         if (inputHandler != null) inputHandler.OnPausePressed += TogglePause;

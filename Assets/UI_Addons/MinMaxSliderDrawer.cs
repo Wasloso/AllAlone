@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -46,10 +47,8 @@ public class MinMaxSliderDrawer : PropertyDrawer
         currentMax = Mathf.Clamp(currentMax, minMax.Min, minMax.Max);
 
         if (currentMin > currentMax)
-            // If min goes above max, set max to min to keep them consistent
             currentMax = currentMin;
         if (currentMax < currentMin)
-            // If max goes below min, set min to max
             currentMin = currentMax;
 
         // Apply the new values back to the SerializedProperty
@@ -58,7 +57,7 @@ public class MinMaxSliderDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        // Return the standard single line height for the property
         return EditorGUIUtility.singleLineHeight;
     }
 }
+#endif

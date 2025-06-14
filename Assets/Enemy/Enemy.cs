@@ -21,8 +21,7 @@ namespace Enemy
 
         [SerializeField] public float attackRange = 0.5f;
         [SerializeField] protected float detectionRange = 5.0f;
-        [SerializeField] protected LayerMask targetLayer = LayerMask.GetMask("Player");
-
+        [SerializeField] protected LayerMask targetLayer;
         [SerializeField] public float attackDamage = 10.0f;
         [SerializeField] private Object droppedItemPrefab;
         protected HealthSystem _healthSystem;
@@ -33,6 +32,7 @@ namespace Enemy
 
         protected void Awake()
         {
+            targetLayer = LayerMask.GetMask("Player");
             _healthSystem = gameObject.GetComponent<HealthSystem>();
             _healthSystem.Initialize(maxHealth);
         }
