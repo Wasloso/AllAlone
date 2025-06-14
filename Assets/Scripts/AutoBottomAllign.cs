@@ -14,12 +14,12 @@ public class AutoBottomAlignSprite : MonoBehaviour
 
     private void Start()
     {
-        AlignSpriteToBottom(); // Safety net
+        AlignSpriteToBottom();
     }
 
     private void OnEnable()
     {
-        AlignSpriteToBottom(); // Ensure it runs on spawn too
+        AlignSpriteToBottom();
     }
 
     private void OnValidate()
