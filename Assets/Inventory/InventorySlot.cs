@@ -109,7 +109,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Right || IsTouchTap(eventData))
         {
             var interactingPlayer = GetPlayerFromPointerEventData(eventData);
             if (interactingPlayer == null || inventoryItem.item == null) return;
@@ -131,6 +131,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
                 OnItemChanged?.Invoke();
             }
         }
+    }
+
+    private bool IsTouchTap(PointerEventData eventData)
+    {
+        return Input.touchSupported && eventData.pointerId >= 0 &&
+               eventData.button == PointerEventData.InputButton.Left;
     }
 
     public event Action OnItemChanged;
