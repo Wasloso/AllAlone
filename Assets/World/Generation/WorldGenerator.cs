@@ -125,6 +125,7 @@ public class WorldGenerator : MonoBehaviour
 
         foreach (var objPrefab in objectsToSpawn)
         {
+            if (objPrefab == null) continue;
             var tileOffsetX = (Random.value - 0.5f) * settings.tileSize;
             var tileOffsetZ = (Random.value - 0.5f) * settings.tileSize;
 
