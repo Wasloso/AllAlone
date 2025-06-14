@@ -18,7 +18,7 @@ MonoBehaviour:
   - groundPrefab: {fileID: 5907987544636932385, guid: be1ef2109f61362438dde6d836d64aee, type: 3}
     spawnWeight: 0.05
   objectSpawns:
-  - objectPrefab: {fileID: 144938839920876587, guid: b2b355ebe0a043741a26e9ced67b4de9, type: 3}
+  - objectPrefab: {fileID: 6076359401228137305, guid: b2b355ebe0a043741a26e9ced67b4de9, type: 3}
     spawnChance: 0.217
     spawnOncePerArea: 0
   elevationRange: {x: 0, y: 1}
