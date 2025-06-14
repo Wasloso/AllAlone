@@ -50,7 +50,9 @@ public class PlayerInteractions : MonoBehaviour
 
         var distance = Vector3.Distance(transform.position, hitInfo.point);
 
-        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable)) Target = hitInfo.collider.gameObject;
+        if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactable) &&
+            interactable.CanInteract(gameObject, _playerInventory.GetEquippedItem(SlotTag.Hand)))
+            Target = hitInfo.collider.gameObject;
     }
 
     private void OnKeyboardInteract(InputAction.CallbackContext context)
@@ -63,6 +65,9 @@ public class PlayerInteractions : MonoBehaviour
 
         foreach (var interactable in interactables)
         {
+            if (!interactable.TryGetComponent<IInteractable>(out var interactableObj)) continue;
+            if (!interactableObj.CanInteract(gameObject, _playerInventory.GetEquippedItem(SlotTag.Hand))) continue;
+
             var distance = Vector3.Distance(transform.position, interactable.transform.position);
             if (distance < closestDistance)
             {

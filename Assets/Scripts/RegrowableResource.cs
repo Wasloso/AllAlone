@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Collections;
-using Items;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,17 +7,27 @@ namespace DefaultNamespace
 {
     public class RegrowableResource : WorldObject
     {
-
         [SerializeField] private float regrowTime = 30f;
         [SerializeField] private Sprite growingSprite;
         [SerializeField] private Sprite grownSprite;
-        private SpriteRenderer SpriteRenderer;
+        private AutoBottomAlignSprite autoBottomAlign;
+        private AutoBoxCollider autoBoxCollider;
         private bool isReady = true;
+        private Action OnChangeState;
+        private SpriteRenderer SpriteRenderer;
+
 
         public void Start()
         {
             SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            autoBottomAlign = GetComponentInChildren<AutoBottomAlignSprite>();
+            autoBoxCollider = GetComponent<AutoBoxCollider>();
             SpriteRenderer.sprite = grownSprite;
+            OnChangeState += () =>
+            {
+                autoBottomAlign?.AlignSpriteToBottom();
+                autoBoxCollider?.Refresh();
+            };
         }
 
         public override bool CanInteract(GameObject interactor, Item itemUsed = null)
@@ -44,8 +52,10 @@ namespace DefaultNamespace
                 var quantity = Random.Range(dropEntry.minQuantity, dropEntry.maxQuantity);
                 DropItem(dropEntry.item, transform.position, quantity);
             }
+
             isReady = false;
             SpriteRenderer.sprite = growingSprite;
+            OnChangeState.Invoke();
             StartCoroutine(RegrowCoroutine());
         }
 
@@ -54,6 +64,7 @@ namespace DefaultNamespace
             yield return new WaitForSeconds(regrowTime);
             isReady = true;
             SpriteRenderer.sprite = grownSprite;
+            OnChangeState.Invoke();
         }
 
 
