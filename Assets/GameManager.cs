@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private HealthSystem playerHealthSystem;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject gameFinishedScreen;
+    public bool IsFinished;
 
     private bool isGameOver;
     public static GameManager Instance { get; private set; }
@@ -53,5 +55,11 @@ public class GameManager : MonoBehaviour
     public void QuitWithoutSaving()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void FinishGame()
+    {
+        IsFinished = true;
+        gameFinishedScreen.SetActive(true);
     }
 }

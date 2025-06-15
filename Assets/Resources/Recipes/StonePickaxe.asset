@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
   m_Name: StonePickaxe
   m_EditorClassIdentifier: 
-  ingredients: []
+  ingredients:
+  - item: {fileID: 11400000, guid: a3e00571522ad06458b570f644dcc5e4, type: 2}
+    quantity: 3
+  - item: {fileID: 11400000, guid: d403cb8bedfc928438eb9e709e940648, type: 2}
+    quantity: 2
   resultItem: {fileID: 11400000, guid: 4944af0ccf8136f40b140adb1892834f, type: 2}
   resultAmount: 1

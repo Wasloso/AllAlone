@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21382cd3db28fa943817e4c0b4d45cfb, type: 3}
-  m_Name: Campfire
+  m_Name: Portal
   m_EditorClassIdentifier: 
   ingredients:
-  - item: {fileID: 11400000, guid: 83eb8a14590b10f44a57e85707f90370, type: 2}
+  - item: {fileID: 11400000, guid: 0c7bbc3d31bc9464cb22a1ba14bf1719, type: 2}
     quantity: 5
-  - item: {fileID: 11400000, guid: 33e8acf0989d33a448edd61735f0d9a2, type: 2}
-    quantity: 2
-  structurePrefab: {fileID: 4147721429592498122, guid: 3122e5973a8d14e4996cab4999e75936, type: 3}
+  - item: {fileID: 11400000, guid: 4b83c84f013f35343860a3d3fae3dfec, type: 2}
+    quantity: 3
+  - item: {fileID: 11400000, guid: 0ac0643c4839fd54788f3721418eb60e, type: 2}
+    quantity: 4
+  structurePrefab: {fileID: 6279125954451112024, guid: 6f13c5086689fdf46a3a791a43730b24, type: 3}

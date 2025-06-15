@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
   m_Name: Torch
   m_EditorClassIdentifier: 
-  ingredients: []
+  ingredients:
+  - item: {fileID: 11400000, guid: 33e8acf0989d33a448edd61735f0d9a2, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 7c75559603219b640beeeff57bc58dd6, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: d403cb8bedfc928438eb9e709e940648, type: 2}
+    quantity: 1
   resultItem: {fileID: 11400000, guid: fa8fe844a0e35dc4c9d729ec2c8409cb, type: 2}
   resultAmount: 1

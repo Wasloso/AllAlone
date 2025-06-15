@@ -175,7 +175,13 @@ MonoBehaviour:
   maxBoredTime: 30
   boredTimer: 0
   updateBoredTimer: 1
-  itemDrops: []
+  itemDrops:
+  - item: {fileID: 11400000, guid: 0c7bbc3d31bc9464cb22a1ba14bf1719, type: 2}
+    minQuantity: 0
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: 0ac0643c4839fd54788f3721418eb60e, type: 2}
+    minQuantity: 0
+    maxQuantity: 1
   maxHealth: 30
   attackRange: 0.5
   detectionRange: 50
@@ -183,7 +189,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   attackDamage: 10
-  droppedItemPrefab: {fileID: 0}
+  droppedItemPrefab: {fileID: 2419407849854492215, guid: c2358ddaaab8590408a59d12df3b81c0, type: 3}
   stalkTime: 10
   currentStalkTime: 0
   stalkRange: 10

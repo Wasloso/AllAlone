@@ -165,8 +165,11 @@ MonoBehaviour:
   updateBoredTimer: 1
   itemDrops:
   - item: {fileID: 11400000, guid: 7c75559603219b640beeeff57bc58dd6, type: 2}
-    minQuantity: 1
-    maxQuantity: 10
+    minQuantity: 0
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: 4b83c84f013f35343860a3d3fae3dfec, type: 2}
+    minQuantity: 0
+    maxQuantity: 1
   maxHealth: 10
   attackRange: 1
   detectionRange: 5
