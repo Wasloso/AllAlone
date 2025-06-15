@@ -75,7 +75,7 @@ public class CutsceneManager : MonoBehaviour
         ProceedToGame();
     }
 
-    private void ProceedToGame()
+    public void ProceedToGame()
     {
         SceneManager.sceneLoaded += OnGameSceneLoaded;
         var currentIndex = SceneManager.GetActiveScene().buildIndex;
