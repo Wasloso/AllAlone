@@ -1,26 +1,74 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 // Or UnityEngine.Video if using VideoPlayer
 
+
 public class CutsceneManager : MonoBehaviour
 {
-    public PlayableDirector cutscene;
+    [TextArea] public string CutsceneText;
+    [SerializeField] private TMP_Text signText;
+
+    private readonly float typingSpeed = 0.05f; // seconds between each character
+    private int currentPart;
+
+    private string[] textParts;
+
+    private Coroutine typingCoroutine;
 
     private void Start()
     {
-        if (cutscene != null)
-        {
-            cutscene.stopped += OnCutsceneFinished;
-            cutscene.Play();
-        }
-        else
-        {
-            Debug.LogWarning("No cutscene assigned.");
-            ProceedToGame();
-        }
+        textParts = CutsceneText.Split('\n');
+        currentPart = 0;
+        if (textParts.Length > 0) StartTypingText(textParts[currentPart]);
     }
+
+    private void Update()
+    {
+    }
+
+    private void StartTypingText(string text)
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+        typingCoroutine = StartCoroutine(TypeTextRoutine(text));
+    }
+
+    private IEnumerator TypeTextRoutine(string fullText)
+    {
+        signText.text = "";
+        if (fullText.Length == 0)
+        {
+            typingCoroutine = null;
+            AdvanceText();
+            yield break;
+        }
+
+        foreach (var c in fullText)
+        {
+            signText.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        typingCoroutine = null;
+
+        yield return new WaitForSeconds(2f);
+
+        AdvanceText();
+    }
+
+    private void AdvanceText()
+    {
+        currentPart++;
+        if (currentPart >= textParts.Length)
+            ProceedToGame();
+        else
+            StartTypingText(textParts[currentPart]);
+    }
+
 
     private void OnCutsceneFinished(PlayableDirector pd)
     {
