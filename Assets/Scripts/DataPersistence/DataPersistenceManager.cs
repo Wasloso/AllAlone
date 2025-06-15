@@ -23,6 +23,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             if (_instance == null)
                 _instance = FindAnyObjectByType<DataPersistenceManager>();
+
             return _instance;
         }
 
@@ -108,6 +109,12 @@ public class DataPersistenceManager : MonoBehaviour
     public void ResetGame(int slotNum)
     {
         FileDataHandler.Delete(fileName + slotNum);
+        gameData = null;
+    }
+
+    public void ResetGame()
+    {
+        FileDataHandler.Delete(fileName + currentGame);
         gameData = null;
     }
 }
