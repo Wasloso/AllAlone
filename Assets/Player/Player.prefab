@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1aa362595cd4d9e9e718160d1b7c089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decayRatePerSecond: 1
-  starvationDamagePerSecond: 5
+  decayRatePerSecond: 0.075
+  starvationDamagePerSecond: 0.2
 --- !u!114 &8654137925488112630
 MonoBehaviour:
   m_ObjectHideFlags: 0
