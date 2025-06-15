@@ -76,6 +76,12 @@ public class StateMachine
         return null;
     }
 
+    public void ClearTransitions()
+    {
+        _transitions.Clear();
+        _anyTransitions.Clear();
+    }
+
     private class Transition
     {
         public Transition(IState to, Func<bool> condition)

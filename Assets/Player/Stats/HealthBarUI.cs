@@ -1,12 +1,10 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    [Header("UI Elements")]
-
-    [SerializeField] private TextMeshProUGUI healthText;
+    [Header("UI Elements")] [SerializeField]
+    private TextMeshProUGUI healthText;
 
     [Header("Dependencies")] [SerializeField]
     private Player.Player playerRef;
@@ -58,6 +56,5 @@ public class HealthBarUI : MonoBehaviour
 
     private void OnPlayerDied()
     {
-        Debug.Log("HealthBarUI detected Player Died!");
     }
 }
