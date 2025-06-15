@@ -1,10 +1,9 @@
-
 using System.IO;
 using UnityEngine;
 
 public class FileDataHandler
 {
-    private string dataDirPath = "";
+    private readonly string dataDirPath = "";
 
 
     public FileDataHandler(string dataDirPath)
@@ -14,19 +13,18 @@ public class FileDataHandler
 
     public GameData Load(string dataFileName)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        var fullPath = Path.Combine(dataDirPath, dataFileName);
 
         GameData loadedData = null;
 
         if (File.Exists(fullPath))
-        {
             try
             {
-                string dataToLoad = "";
+                var dataToLoad = "";
 
-                using (FileStream stream = new FileStream(fullPath,FileMode.Open))
+                using (var stream = new FileStream(fullPath, FileMode.Open))
                 {
-                    using (StreamReader reader = new StreamReader(stream))
+                    using (var reader = new StreamReader(stream))
                     {
                         dataToLoad = reader.ReadToEnd();
                     }
@@ -38,32 +36,47 @@ public class FileDataHandler
             {
                 Debug.LogError("Error at loading game");
             }
-        }
+
         return loadedData;
     }
 
     public void Save(GameData data, string dataFileName)
     {
-        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        var fullPath = Path.Combine(dataDirPath, dataFileName);
 
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            string dataToStore = JsonUtility.ToJson(data);
+            var dataToStore = JsonUtility.ToJson(data);
 
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                using (StreamWriter writer = new StreamWriter(stream))
+                using (var writer = new StreamWriter(stream))
                 {
                     writer.Write(dataToStore);
                 }
             }
-        
         }
         catch
         {
             Debug.LogError("Error at saving game");
         }
+    }
+
+    public void Delete(string dataFileName)
+    {
+        var fullPath = Path.Combine(dataDirPath, dataFileName);
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log($"Deleted save file at: {fullPath}");
+        }
+    }
+
+    public bool SaveExists(string dataFileName)
+    {
+        var fullPath = Path.Combine(dataDirPath, dataFileName);
+        return File.Exists(fullPath);
     }
 }

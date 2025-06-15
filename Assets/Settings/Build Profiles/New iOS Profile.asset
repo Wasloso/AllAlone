@@ -23,6 +23,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/Menu.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/Cutscene/Cutscene.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/GameMobile.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
@@ -964,6 +966,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 6740080251918876674
       type: {class: iOSPlatformSettings, ns: UnityEditor.iOS, asm: UnityEditor.iOS.Extensions}
       data:
