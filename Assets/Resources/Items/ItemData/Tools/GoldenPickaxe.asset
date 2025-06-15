@@ -15,10 +15,10 @@ MonoBehaviour:
   id: golden_pickaxe
   title: Golden Pickaxe
   description: GoldenPickaxe
-  icon: {fileID: 8168027293871005872, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
+  icon: {fileID: 7588202725560302982, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1
-  statModifiers: []
   itemType: 3
   slotTag: 3
+  statModifiers: []
   effectiveness: 4
   toolType: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: golden_sword
   title: Golden Sword
   description: A generic item.
-  icon: {fileID: 0}
+  icon: {fileID: 3403939264663429896, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1
   itemType: 1
   slotTag: 3

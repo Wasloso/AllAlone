@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6b261b82834b71a9ebe81a3f6abd56, type: 3}
-  m_Name: Potato
+  m_Name: PotatoCarrotSalad
   m_EditorClassIdentifier: 
-  id: potato
-  title: Potato
-  description: Tasty Tasty Yum Yum
-  icon: {fileID: -6557471644885675506, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
+  id: P7f54a191-1969-43f1-9d05-7f464da9094f
+  title: Potato and Carrot salad
+  description: A generic item.
+  icon: {fileID: -732957987256202325, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 16
   itemType: 4
   slotTag: 0
-  restoreHealth: 5
-  restoreHunger: 3
+  restoreHealth: 15
+  restoreHunger: 30
   restoreSanity: 0
   isOneTimeUse: 1

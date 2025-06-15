@@ -15,10 +15,10 @@ MonoBehaviour:
   id: golden_axe
   title: Golden Axe
   description: Golden axe
-  icon: {fileID: 8168027293871005872, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
+  icon: {fileID: 1947691763978787712, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1
-  statModifiers: []
   itemType: 3
   slotTag: 3
+  statModifiers: []
   effectiveness: 4
   toolType: 0

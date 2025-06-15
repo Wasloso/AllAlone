@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd82cd1acb0388742a07d93af0c02da5, type: 3}
+  m_Name: Golden Sword
+  m_EditorClassIdentifier: 
+  ingredients:
+  - item: {fileID: 11400000, guid: f94f95d7748e31d489b0f757256762ae, type: 2}
+    quantity: 3
+  - item: {fileID: 11400000, guid: d403cb8bedfc928438eb9e709e940648, type: 2}
+    quantity: 2
+  resultItem: {fileID: 11400000, guid: 8f65fcde20c57134ba6bace1eff859db, type: 2}
+  resultAmount: 1

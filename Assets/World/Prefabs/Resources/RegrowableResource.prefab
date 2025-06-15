@@ -12,6 +12,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: RegrowableResource
       objectReference: {fileID: 0}
+    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8138839
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1211017311584890413, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
+    - target: {fileID: 3629552240298339089, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614546074271086095, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614546074271086095, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8138839
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614546074271086095, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Size.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614546074271086095, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_Center.y
+      value: 0.90694195
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671690368782545096, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.90694195
+      objectReference: {fileID: 0}
     - target: {fileID: 9161760614573332405, guid: 1a7b40f18a9a60b4aa537b36989256d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -78,7 +114,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedItemPrefab: {fileID: 2419407849854492215, guid: c2358ddaaab8590408a59d12df3b81c0, type: 3}
-  interactionAnimationType: 0
+  interactionAnimationType: 1
   currentHealth: 10
-  itemDrops: []
-  regrowTime: 30
+  itemDrops:
+  - item: {fileID: 11400000, guid: dc1fd0f23f23c5d4da763c7f3d7d53ea, type: 2}
+    minQuantity: 1
+    maxQuantity: 1
+  regrowTime: 600
+  growingSprite: {fileID: 8314400138140667480, guid: 5d024871fbc1e724596c64e73a5514ae, type: 3}
+  grownSprite: {fileID: 1211017311584890413, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Torch
   m_EditorClassIdentifier: 
   id: torch
-  title: New Light Item
+  title: Torch
   description: A generic item.
   icon: {fileID: 5716894660097160329, guid: 7576f27e03e6ee541bf9a19137b3f630, type: 3}
   maxStackSize: 1

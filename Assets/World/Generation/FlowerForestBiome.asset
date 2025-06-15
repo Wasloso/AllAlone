@@ -22,6 +22,21 @@ MonoBehaviour:
   - objectPrefab: {fileID: 7795315095876841820, guid: d54e002f247bfa949a8274d5e6d047f8, type: 3}
     spawnChance: 0.06
     spawnOncePerArea: 0
+  - objectPrefab: {fileID: 7159012341126967448, guid: a49bb69d192e6854d96294da10d366be, type: 3}
+    spawnChance: 0.019
+    spawnOncePerArea: 0
+  - objectPrefab: {fileID: 1812441866680132112, guid: 42431bff1605b564cb67e1d5533eb116, type: 3}
+    spawnChance: 0.012
+    spawnOncePerArea: 0
+  - objectPrefab: {fileID: 1812441866680132112, guid: 42431bff1605b564cb67e1d5533eb116, type: 3}
+    spawnChance: 0.012
+    spawnOncePerArea: 0
+  - objectPrefab: {fileID: 5277866549373463538, guid: 08968ea470b2b73428757999c3a682ec, type: 3}
+    spawnChance: 0.012
+    spawnOncePerArea: 0
+  - objectPrefab: {fileID: 5277866549373463538, guid: 824cc56dcebcd1646803560d7b11bbaf, type: 3}
+    spawnChance: 0.012
+    spawnOncePerArea: 0
   elevationRange: {x: 0, y: 1}
   temperatureRange: {x: 0, y: 1}
   humidityRange: {x: 0, y: 1}
