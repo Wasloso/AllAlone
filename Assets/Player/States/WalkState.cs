@@ -37,7 +37,5 @@ namespace Player.States
         {
             _animator.SetBool(_isWalking, false);
         }
-
-
     }
 }
