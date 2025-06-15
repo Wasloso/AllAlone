@@ -1,6 +1,4 @@
 using UnityEngine;
-
-using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -24,7 +22,6 @@ public class SettingsUI : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-
         mixer.SetFloat("MasterVolume", Mathf.Log10(Mathf.Clamp(volume, 0.001f, 1f)) * 20);
     }
 
@@ -40,9 +37,9 @@ public class SettingsUI : MonoBehaviour
 
     private void InitializeSliderFromMixer(Slider slider, string exposedParam)
     {
-        if (mixer.GetFloat(exposedParam, out float dB))
+        if (mixer.GetFloat(exposedParam, out var dB))
         {
-            float linear = Mathf.Pow(10f, dB / 20f);
+            var linear = Mathf.Pow(10f, dB / 20f);
             slider.SetValueWithoutNotify(linear);
         }
         else
@@ -51,5 +48,3 @@ public class SettingsUI : MonoBehaviour
         }
     }
 }
-
-

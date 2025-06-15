@@ -1,17 +1,22 @@
-using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    [Header("File Storage Config")]
-    [SerializeField] private string fileName;
-
-    public int currentGame = 0;
     private static DataPersistenceManager _instance;
+
+    [Header("File Storage Config")] [SerializeField]
+    private string fileName;
+
+    public int currentGame;
+
+    private List<IDataPersistence> dataPersistenceList;
+
+    private GameData gameData;
+    public FileDataHandler FileDataHandler { get; private set; }
+
     public static DataPersistenceManager Instance
     {
         get
@@ -24,14 +29,9 @@ public class DataPersistenceManager : MonoBehaviour
         private set { }
     }
 
-    private GameData gameData;
-
-    private List<IDataPersistence> dataPersistenceList;
-    private FileDataHandler fileDataHandler;
-
     private void Awake()
     {
-        fileDataHandler = new FileDataHandler(Application.persistentDataPath);
+        FileDataHandler = new FileDataHandler(Application.persistentDataPath);
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
@@ -42,9 +42,14 @@ public class DataPersistenceManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
     private List<IDataPersistence> FindAllDataPersistence()
     {
-        IEnumerable<IDataPersistence> dataPersistences = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IDataPersistence>();
+        var dataPersistences = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistences);
     }
@@ -52,17 +57,25 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         gameData = new GameData();
-        Debug.Log("New Game!");
     }
 
     public void LoadGameScene()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene("TestScene");
+
+        var currentIndex = SceneManager.GetActiveScene().buildIndex;
+        var nextIndex = currentIndex + 1;
+        if (FileDataHandler.SaveExists(fileName + currentGame))
+            nextIndex++;
+
+        if (nextIndex < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(nextIndex);
+        else
+            Debug.LogWarning("No next scene found in build settings!");
     }
 
 
-    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         LoadGame();
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -71,48 +84,30 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         SetPersistenceList();
-        gameData = fileDataHandler.Load(fileName+currentGame);
-        if (gameData == null)
-        {
-            NewGame();  
-       
-        }
+        gameData = FileDataHandler.Load(fileName + currentGame);
+        if (gameData == null) NewGame();
 
-        foreach (IDataPersistence dataPersistence in dataPersistenceList)
-        {
-            dataPersistence.LoadData(gameData);
-        }
+        foreach (var dataPersistence in dataPersistenceList) dataPersistence.LoadData(gameData);
     }
 
     public void SaveGame()
     {
         SetPersistenceList();
-        foreach (IDataPersistence dataPersistence in dataPersistenceList)
-        {
-            dataPersistence.SaveData(ref gameData);
-        }
+        foreach (var dataPersistence in dataPersistenceList) dataPersistence.SaveData(ref gameData);
 
-        fileDataHandler.Save(gameData, fileName+currentGame);
+        FileDataHandler.Save(gameData, fileName + currentGame);
         dataPersistenceList.Clear();
-    }
-
-    public void OnApplicationQuit()
-    {
-        SaveGame();
     }
 
     public void SetPersistenceList()
     {
         if (dataPersistenceList == null || dataPersistenceList.Count == 0)
-        {
             dataPersistenceList = FindAllDataPersistence();
-        }
     }
 
-    public void ResetGame()
+    public void ResetGame(int slotNum)
     {
-        gameData = new GameData();
-        SaveGame();
+        FileDataHandler.Delete(fileName + slotNum);
+        gameData = null;
     }
-
 }
