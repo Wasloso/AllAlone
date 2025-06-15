@@ -2327,6 +2327,10 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 3840797943996972348, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
+      propertyPath: m_Size
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3863751758551629497, guid: 46e4736eccdefea40825c6d1b620bae5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
